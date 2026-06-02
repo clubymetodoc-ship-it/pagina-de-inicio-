@@ -1750,8 +1750,10 @@ body.video-modal-open { overflow: hidden; }
   .hero-photo-badge[style] {
     margin: 0 !important;
     position: absolute;
-    top: 18px;
-    right: 18px;
+    bottom: 18px;
+    left: 18px;
+    top: auto;
+    right: auto;
     padding: 8px 12px !important;
     background: rgba(20, 25, 43, 0.55);
     border-radius: var(--r-md);
