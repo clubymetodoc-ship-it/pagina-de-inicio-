@@ -292,3 +292,44 @@ window.addEventListener('message', (e) => {
 buildPanel();
 applyTweaks();
 try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch(e){}
+
+// ============================================================
+//   TESTIMONIAL VIDEO MODAL (Panda Video)
+// ============================================================
+(function () {
+  const modal = document.getElementById('video-modal');
+  const player = document.getElementById('video-modal-player');
+  if (!modal || !player) return;
+
+  function open(library, videoId) {
+    if (!library || !videoId || library.startsWith('REPLACE_') || videoId.startsWith('REPLACE_')) {
+      console.warn('[Club C] Falta configurar el embed de Panda Video para este testimonio.');
+      return;
+    }
+    const src = `https://player-${library}.tv.pandavideo.com.br/embed/?v=${encodeURIComponent(videoId)}`;
+    player.innerHTML = `<iframe src="${src}" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('video-modal-open');
+  }
+
+  function close() {
+    player.innerHTML = '';
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('video-modal-open');
+  }
+
+  document.querySelectorAll('.testimonial-video-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      open(btn.dataset.pandaLibrary, btn.dataset.pandaVideo);
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('video-modal-close')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();

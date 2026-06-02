@@ -1637,3 +1637,94 @@ section { position: relative; }
 
 /* hide marquee when off */
 .marquee.hidden, .lograr.hidden { display: none; }
+
+/* ===========  TESTIMONIAL VIDEO BUTTON  =========== */
+.testimonial-video-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 18px;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(58, 79, 143, 0.25);
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.testimonial-video-btn:hover {
+  background: var(--primary);
+  color: var(--accessory);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+.testimonial-video-btn svg { flex-shrink: 0; }
+
+.testimonial-feature .testimonial-video-btn {
+  color: var(--accessory);
+  border-color: rgba(247, 246, 243, 0.35);
+}
+.testimonial-feature .testimonial-video-btn:hover {
+  background: var(--accessory);
+  color: var(--primary-deep);
+  border-color: var(--accessory);
+}
+
+/* ===========  VIDEO MODAL  =========== */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(10, 14, 28, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: video-modal-fade 0.18s ease;
+}
+.video-modal[hidden] { display: none; }
+@keyframes video-modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.video-modal-frame {
+  width: 100%;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.video-modal-player,
+.video-modal-player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.video-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(247, 246, 243, 0.12);
+  color: var(--accessory);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease;
+}
+.video-modal-close:hover { background: rgba(247, 246, 243, 0.22); }
+
+body.video-modal-open { overflow: hidden; }
