@@ -1729,6 +1729,18 @@ section { position: relative; }
 
 body.video-modal-open { overflow: hidden; }
 
+/* The hero photo badge carries inline tweaks from the design tool
+   (width: 90px; margin: 0 0 100px 110px; padding: 0 16px) that push the
+   absolutely-positioned badge outside the photo frame. Neutralize them
+   so the default top-right anchor takes effect. */
+.hero-photo-badge[style] {
+  margin: 0 !important;
+  width: auto !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
 /* ===========  MOBILE OVERRIDES  =========== */
 /* Many inline styles in the markup came from the design tool with fixed
    pixel widths/heights. These overrides relax them on small viewports so
