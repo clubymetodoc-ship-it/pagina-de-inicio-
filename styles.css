@@ -1009,6 +1009,13 @@ section { position: relative; }
   color: var(--primary-deep);
   flex-shrink: 0;
   letter-spacing: 0.02em;
+  overflow: hidden;
+}
+.person-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .testimonial-feature .person-avatar { background: var(--tertiary); }
 .person-name {
