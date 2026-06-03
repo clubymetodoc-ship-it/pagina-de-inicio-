@@ -401,6 +401,9 @@ section { position: relative; }
   background: var(--primary-dark);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--line-on-dark);
+  max-width: 380px;
+  width: 100%;
+  margin-left: auto;
 }
 .hero-photo img {
   width: 100%; height: 100%;
@@ -1749,9 +1752,9 @@ body.video-modal-open { overflow: hidden; }
   #hero-img[style] { height: 100% !important; width: 100%; margin: 0 !important; }
   .hero-photo-badge {
     bottom: 18px;
-    left: 18px;
+    right: 18px;
     top: auto;
-    right: auto;
+    left: auto;
     padding: 8px 12px;
     background: rgba(20, 25, 43, 0.55);
   }
