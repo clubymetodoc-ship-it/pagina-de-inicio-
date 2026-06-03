@@ -1729,18 +1729,6 @@ section { position: relative; }
 
 body.video-modal-open { overflow: hidden; }
 
-/* The hero photo badge carries inline tweaks from the design tool
-   (width: 90px; margin: 0 0 100px 110px; padding: 0 16px) that push the
-   absolutely-positioned badge outside the photo frame. Neutralize them
-   so the default top-right anchor takes effect. */
-.hero-photo-badge[style] {
-  margin: 0 !important;
-  width: auto !important;
-  padding: 12px 16px !important;
-  font-size: 14px !important;
-  font-weight: 700 !important;
-}
-
 /* ===========  MOBILE OVERRIDES  =========== */
 /* Many inline styles in the markup came from the design tool with fixed
    pixel widths/heights. These overrides relax them on small viewports so
@@ -1759,17 +1747,13 @@ body.video-modal-open { overflow: hidden; }
   }
   .hero-photo[style] { height: auto !important; aspect-ratio: 4 / 5; max-height: 560px; }
   #hero-img[style] { height: 100% !important; width: 100%; margin: 0 !important; }
-  .hero-photo-badge[style] {
-    margin: 0 !important;
-    position: absolute;
+  .hero-photo-badge {
     bottom: 18px;
     left: 18px;
     top: auto;
     right: auto;
-    padding: 8px 12px !important;
+    padding: 8px 12px;
     background: rgba(20, 25, 43, 0.55);
-    border-radius: var(--r-md);
-    font-size: 16px !important;
   }
   .hero-meta { gap: 20px; margin-top: 32px; }
   .meta-divider { display: none; }
