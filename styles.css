@@ -412,7 +412,7 @@ section { position: relative; }
 }
 .hero-photo-badge {
   position: absolute;
-  top: 22px; right: 22px;
+  bottom: 22px; right: 22px;
   background: rgba(20, 25, 43, 0.78);
   backdrop-filter: blur(10px);
   border-radius: var(--r-md);
@@ -1753,8 +1753,6 @@ body.video-modal-open { overflow: hidden; }
   .hero-photo-badge {
     bottom: 18px;
     right: 18px;
-    top: auto;
-    left: auto;
     padding: 8px 12px;
     background: rgba(20, 25, 43, 0.55);
   }
