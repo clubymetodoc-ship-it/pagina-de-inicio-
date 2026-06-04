@@ -222,23 +222,10 @@
     box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .22s ease, box-shadow .22s ease;
   }
   .testi-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-  .video-ph {
-    position: relative; aspect-ratio: 16 / 11; cursor: pointer;
-    background-color: var(--cream-2);
-    background-image: repeating-linear-gradient(45deg, rgba(58,79,143,0.06) 0 12px, rgba(58,79,143,0.11) 12px 24px);
-    display: grid; place-items: center;
+  .video-emb {
+    position: relative; aspect-ratio: 16 / 9; background: var(--navy-ink); overflow: hidden;
   }
-  .video-ph .play {
-    width: 62px; height: 62px; border-radius: 50%; background: var(--navy); color: var(--cream);
-    display: grid; place-items: center; box-shadow: var(--shadow); transition: transform .2s ease, background .2s ease;
-  }
-  .video-ph:hover .play { transform: scale(1.08); background: var(--peach); color: var(--navy-ink); }
-  .video-ph .play svg { width: 24px; height: 24px; margin-left: 3px; }
-  .video-ph .vlabel {
-    position: absolute; left: 12px; bottom: 12px; font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
-    font-size: .68rem; letter-spacing: .04em; color: var(--navy); background: rgba(255,255,255,0.85);
-    padding: 4px 9px; border-radius: 7px; text-transform: uppercase;
-  }
+  .video-emb iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
   .testi-body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
   .stars { display: flex; gap: 3px; color: var(--peach); }
   .stars svg { width: 17px; height: 17px; }
@@ -246,11 +233,9 @@
   .testi-person { display: flex; align-items: center; gap: 12px; padding-top: 4px; border-top: 1px solid var(--line); margin-top: 2px; padding-top: 16px; }
   .avatar {
     width: 46px; height: 46px; border-radius: 50%; flex: none; overflow: hidden;
-    background-color: var(--blue-soft);
-    background-image: repeating-linear-gradient(45deg, rgba(58,79,143,0.08) 0 6px, rgba(58,79,143,0.14) 6px 12px);
-    display: grid; place-items: center; color: var(--navy);
+    background: var(--blue-soft);
   }
-  .avatar svg { width: 22px; height: 22px; opacity: .55; }
+  .avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .testi-person b { font-family: var(--font-head); font-weight: 600; color: var(--navy-ink); display: block; font-size: .98rem; }
   .testi-person span { font-size: .85rem; color: var(--muted); }
 
@@ -475,9 +460,13 @@
     <div class="testi-grid">
       <!-- Testimonio 1 -->
       <article class="testi-card">
-        <div class="video-ph" data-open-form>
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="vlabel">video testimonio 01</span>
+        <div class="video-emb">
+          <iframe
+            src="https://player-vz-00521248-76b.tv.pandavideo.com.br/embed/?v=7c6b80b2-bad2-48c0-bbc2-d20a2409022c"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Testimonio Gino Ryll"></iframe>
         </div>
         <div class="testi-body">
           <div class="stars" aria-label="5 estrellas">
@@ -489,16 +478,20 @@
           </div>
           <p class="testi-quote">“Como profe, nunca me había capacitado en nada de ventas o marketing. Trabajando con el Club C encontré esa estrategia que me estaba faltando para potenciar mi negocio. En 2 semanas pude facturar lo mismo que hacía trabajando con casi 70 clientes.”</p>
           <div class="testi-person">
-            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span class="avatar"><img src="assets/testimonial-gino.jpg" alt="Gino Ryll" /></span>
             <span><b>Gino Ryll</b><span>Profe de Educación Física</span></span>
           </div>
         </div>
       </article>
       <!-- Testimonio 2 -->
       <article class="testi-card">
-        <div class="video-ph" data-open-form>
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="vlabel">video testimonio 02</span>
+        <div class="video-emb">
+          <iframe
+            src="https://player-vz-00521248-76b.tv.pandavideo.com.br/embed/?v=a9aeb6be-1b84-4216-b8a1-84a1c203dc24"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Testimonio Agustina Bouvet"></iframe>
         </div>
         <div class="testi-body">
           <div class="stars" aria-label="5 estrellas">
@@ -510,16 +503,20 @@
           </div>
           <p class="testi-quote">“No quería estar en enero/febrero con el consultorio en baja, ni llegar dentro de unos años dependiendo exclusivamente del trabajo 1 a 1. Había hecho otras capacitaciones en marketing, pero acá encontré el acompañamiento y la guía que me faltaban: empecé a trabajar con pacientes nuevos y llené los cupos de talleres en enero y febrero.”</p>
           <div class="testi-person">
-            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span class="avatar"><img src="assets/testimonial-agustina.jpg" alt="Agustina Bouvet" /></span>
             <span><b>Agustina Bouvet</b><span>Lic. en Kinesiología</span></span>
           </div>
         </div>
       </article>
       <!-- Testimonio 3 -->
       <article class="testi-card">
-        <div class="video-ph" data-open-form>
-          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
-          <span class="vlabel">video testimonio 03</span>
+        <div class="video-emb">
+          <iframe
+            src="https://player-vz-00521248-76b.tv.pandavideo.com.br/embed/?v=05d82706-7ca9-452a-9b19-bd0e3d24d2f0"
+            allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Testimonio Luis Giménez"></iframe>
         </div>
         <div class="testi-body">
           <div class="stars" aria-label="5 estrellas">
@@ -531,7 +528,7 @@
           </div>
           <p class="testi-quote">“A fin de año no lograba cubrir el alquiler del consultorio, y eso me venía pasando hace 5 años. Llegué a pensar que me había equivocado de profesión. Con la Formación del Club C logré una facturación récord en enero, superando incluso a los meses buenos. Con eso pude planificar y tomarme unas vacaciones que hacía tiempo no me permitía.”</p>
           <div class="testi-person">
-            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span class="avatar"><img src="assets/testimonial-luis.jpg" alt="Luis Giménez" /></span>
             <span><b>Luis &laquo;Lucho&raquo; Giménez</b><span>Lic. en Nutrición</span></span>
           </div>
         </div>
