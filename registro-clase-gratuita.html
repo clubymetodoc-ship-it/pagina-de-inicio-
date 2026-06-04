@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clase gratuita · Club C — Cate Barale</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Lato:wght@400;700;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #3a4f8f;
+    --navy-deep: #2b3c6e;
+    --navy-ink: #1f2b50;
+    --cream: #f7f6f3;
+    --cream-2: #efece5;
+    --blue: #7db5e8;
+    --blue-soft: #d9e9f8;
+    --peach: #f4b8a3;
+    --peach-soft: #fae3d9;
+    --white: #ffffff;
+    --text: #2a3252;
+    --muted: #6b7396;
+    --line: #e4e1d8;
+    --shadow-sm: 0 2px 10px rgba(31, 43, 80, 0.06);
+    --shadow: 0 14px 40px rgba(31, 43, 80, 0.12);
+    --shadow-lg: 0 28px 70px rgba(31, 43, 80, 0.18);
+    --maxw: 1120px;
+    --radius: 22px;
+    --font-head: 'Poppins', system-ui, sans-serif;
+    --font-body: 'Lato', system-ui, sans-serif;
+    --font-hand: 'Caveat', cursive;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text);
+    background: var(--cream);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-head); color: var(--navy-ink); line-height: 1.15; letter-spacing: -0.01em; }
+
+  .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 22px; }
+
+  .hand { font-family: var(--font-hand); color: var(--navy); font-weight: 600; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    font-family: var(--font-head); font-weight: 700; font-size: 1.06rem;
+    color: var(--white); background: var(--navy);
+    border: none; border-radius: 999px; cursor: pointer;
+    padding: 17px 38px; text-decoration: none;
+    box-shadow: 0 12px 26px rgba(58, 79, 143, 0.32);
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    position: relative;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 18px 36px rgba(58, 79, 143, 0.4); background: var(--navy-deep); }
+  .btn:active { transform: translateY(0); }
+  .btn svg { width: 19px; height: 19px; }
+  .btn--peach { background: var(--peach); color: var(--navy-ink); box-shadow: 0 12px 26px rgba(244, 184, 163, 0.5); }
+  .btn--peach:hover { background: #efa88e; box-shadow: 0 18px 36px rgba(244, 184, 163, 0.6); }
+  .btn--lg { font-size: 1.18rem; padding: 20px 46px; }
+  .btn--block { display: flex; width: 100%; }
+
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-head); font-weight: 600; font-size: .8rem;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--navy);
+    background: var(--blue-soft); padding: 8px 16px; border-radius: 999px;
+  }
+  .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--navy); }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: var(--navy);
+    backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; }
+  .brand img { height: 42px; width: auto; display: block; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.05; }
+  .brand-text b { font-family: var(--font-head); font-weight: 700; color: var(--navy-ink); font-size: 1.02rem; }
+  .brand-text span { font-size: .74rem; color: var(--muted); letter-spacing: .03em; }
+  .header-cta { font-size: .95rem; padding: 12px 26px; background: var(--peach); color: var(--navy-ink); box-shadow: 0 10px 22px rgba(244, 184, 163, 0.4); }
+  .header-cta:hover { background: #efa88e; box-shadow: 0 14px 28px rgba(244, 184, 163, 0.55); }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; padding: clamp(40px, 7vw, 78px) 0 clamp(48px, 8vw, 86px); }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background:
+      radial-gradient(60% 60% at 88% 8%, rgba(125,181,232,0.22), transparent 60%),
+      radial-gradient(50% 50% at 5% 92%, rgba(244,184,163,0.22), transparent 60%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(28px, 4vw, 60px); align-items: center; }
+  .hero h1 { font-size: clamp(2rem, 5.4vw, 3.5rem); font-weight: 800; margin: 20px 0 18px; }
+  .hero h1 .accent { color: var(--navy); }
+  .hero .lead { font-size: clamp(1.06rem, 1.6vw, 1.22rem); color: var(--text); max-width: 30em; margin-bottom: 30px; }
+  .hero .lead b { color: var(--navy-ink); font-weight: 700; }
+  .hero-cta-row { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+  .hero-note { display: flex; align-items: center; gap: 8px; font-size: .92rem; color: var(--muted); }
+  .hero-note svg { width: 17px; height: 17px; color: var(--navy); flex: none; }
+
+  /* Hero figure */
+  .hero-figure { position: relative; }
+  .hero-photo {
+    position: relative; border-radius: 28px; overflow: hidden;
+    box-shadow: var(--shadow-lg); aspect-ratio: 4 / 5; background: var(--cream-2);
+    border: 6px solid var(--white);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+  .hero-badge {
+    position: absolute; left: -14px; bottom: 28px; z-index: 3;
+    background: var(--white); border-radius: 18px; padding: 14px 18px;
+    box-shadow: var(--shadow); display: flex; align-items: center; gap: 12px;
+    border: 1px solid var(--line);
+  }
+  .hero-badge .pulse { width: 38px; height: 38px; border-radius: 12px; background: var(--peach-soft); display: grid; place-items: center; color: var(--navy); flex: none; }
+  .hero-badge .pulse svg { width: 20px; height: 20px; }
+  .hero-badge b { font-family: var(--font-head); color: var(--navy-ink); font-size: 1rem; display: block; }
+  .hero-badge span { font-size: .8rem; color: var(--muted); }
+  .hero-chip {
+    position: absolute; right: -8px; top: 22px; z-index: 3;
+    background: var(--navy); color: var(--white); border-radius: 14px;
+    padding: 10px 16px; box-shadow: var(--shadow); font-family: var(--font-head);
+    font-weight: 600; font-size: .9rem; transform: rotate(3deg);
+  }
+
+  /* who-for tags */
+  .who-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+  .who-tags .tag {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-head);
+    font-weight: 600; font-size: .92rem; color: var(--navy-ink);
+    background: var(--white); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px;
+    box-shadow: var(--shadow-sm);
+  }
+  .who-tags .tag svg { width: 17px; height: 17px; color: var(--navy); }
+  .who-tags .tag .emoji { font-size: 1.05rem; line-height: 1; }
+
+  /* ---------- Section base ---------- */
+  section { padding: clamp(54px, 8vw, 96px) 0; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(36px, 5vw, 54px); }
+  .section-head h2 { font-size: clamp(1.7rem, 4vw, 2.7rem); font-weight: 800; margin: 16px 0 0; }
+  .section-head p { margin-top: 16px; font-size: 1.1rem; color: var(--muted); }
+
+  /* ---------- Pain points ---------- */
+  .pain { background: var(--white); }
+  .pain-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 920px; margin: 0 auto; }
+  .pain-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    background: var(--cream); border: 1px solid var(--line); border-radius: 18px; padding: 22px 22px;
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .pain-item:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+  .pain-item .n {
+    flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--blue);
+    color: var(--navy); display: grid; place-items: center; font-family: var(--font-head); font-weight: 700;
+  }
+  .pain-item p { font-size: 1.02rem; color: var(--text); }
+  .pain-item p b { color: var(--navy-ink); }
+  .pain-full { grid-column: 1 / -1; }
+
+  /* ---------- CTA band ---------- */
+  .cta-band { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%); position: relative; overflow: hidden; }
+  .cta-band::after {
+    content: ""; position: absolute; right: -80px; top: -80px; width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(125,181,232,0.4), transparent 70%); border-radius: 50%;
+  }
+  .cta-band .wrap { position: relative; z-index: 2; text-align: center; }
+  .cta-band h2 { color: var(--white); font-size: clamp(1.6rem, 3.6vw, 2.5rem); font-weight: 800; max-width: 18em; margin: 0 auto 30px; }
+  .cta-band h2 .hl { color: var(--peach); }
+
+  /* ---------- Learn cards ---------- */
+  .learn-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .learn-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 32px 28px;
+    box-shadow: var(--shadow-sm); transition: transform .22s ease, box-shadow .22s ease; position: relative; overflow: hidden;
+  }
+  .learn-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: var(--blue); }
+  .learn-card:nth-child(2)::before { background: var(--peach); }
+  .learn-card:nth-child(3)::before { background: var(--navy); }
+  .learn-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+  .learn-card .ic {
+    width: 60px; height: 60px; border-radius: 16px; background: var(--blue-soft);
+    display: grid; place-items: center; color: var(--navy); margin-bottom: 22px;
+  }
+  .learn-card:nth-child(1) .ic { background: var(--blue); color: var(--navy-ink); }
+  .learn-card:nth-child(2) .ic { background: var(--peach-soft); color: var(--peach); }
+  .learn-card:nth-child(3) .ic { background: var(--navy); color: var(--cream); }
+  .learn-card .ic svg { width: 30px; height: 30px; }
+  .learn-card h3 { font-size: 1.22rem; font-weight: 700; margin-bottom: 12px; }
+  .learn-card h3 .em { color: var(--navy); }
+  .learn-card:nth-child(1) h3 .em { color: var(--blue); }
+  .learn-card:nth-child(2) h3 .em { color: var(--peach); }
+  .learn-card p { color: var(--muted); font-size: 1.02rem; }
+
+  /* ---------- Numbers (navy) ---------- */
+  .numbers { background: var(--navy-ink); color: var(--white); }
+  .numbers .section-head h2 { color: var(--cream); }
+  .numbers .eyebrow { background: rgba(125,181,232,0.2); color: var(--blue); }
+  .numbers .eyebrow .dot { background: var(--blue); }
+  .num-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 880px; margin: 0 auto; }
+  .num-card { text-align: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius); padding: 36px 24px; }
+  .num-card .big { font-family: var(--font-head); font-weight: 800; font-size: clamp(2.4rem, 5vw, 3.2rem); color: var(--blue); line-height: 1; }
+  .num-card .lbl { margin-top: 12px; font-size: 1.02rem; color: rgba(255,255,255,0.82); }
+  .num-foot { text-align: center; margin-top: 28px; font-size: .9rem; color: rgba(255,255,255,0.55); font-style: italic; }
+
+  /* ---------- Testimonials ---------- */
+  .testi { background: var(--cream); }
+  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .testi-card {
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden;
+    box-shadow: var(--shadow-sm); display: flex; flex-direction: column; transition: transform .22s ease, box-shadow .22s ease;
+  }
+  .testi-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .video-ph {
+    position: relative; aspect-ratio: 16 / 11; cursor: pointer;
+    background-color: var(--cream-2);
+    background-image: repeating-linear-gradient(45deg, rgba(58,79,143,0.06) 0 12px, rgba(58,79,143,0.11) 12px 24px);
+    display: grid; place-items: center;
+  }
+  .video-ph .play {
+    width: 62px; height: 62px; border-radius: 50%; background: var(--navy); color: var(--cream);
+    display: grid; place-items: center; box-shadow: var(--shadow); transition: transform .2s ease, background .2s ease;
+  }
+  .video-ph:hover .play { transform: scale(1.08); background: var(--peach); color: var(--navy-ink); }
+  .video-ph .play svg { width: 24px; height: 24px; margin-left: 3px; }
+  .video-ph .vlabel {
+    position: absolute; left: 12px; bottom: 12px; font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+    font-size: .68rem; letter-spacing: .04em; color: var(--navy); background: rgba(255,255,255,0.85);
+    padding: 4px 9px; border-radius: 7px; text-transform: uppercase;
+  }
+  .testi-body { padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
+  .stars { display: flex; gap: 3px; color: var(--peach); }
+  .stars svg { width: 17px; height: 17px; }
+  .testi-quote { font-size: 1.02rem; color: var(--text); flex: 1; }
+  .testi-person { display: flex; align-items: center; gap: 12px; padding-top: 4px; border-top: 1px solid var(--line); margin-top: 2px; padding-top: 16px; }
+  .avatar {
+    width: 46px; height: 46px; border-radius: 50%; flex: none; overflow: hidden;
+    background-color: var(--blue-soft);
+    background-image: repeating-linear-gradient(45deg, rgba(58,79,143,0.08) 0 6px, rgba(58,79,143,0.14) 6px 12px);
+    display: grid; place-items: center; color: var(--navy);
+  }
+  .avatar svg { width: 22px; height: 22px; opacity: .55; }
+  .testi-person b { font-family: var(--font-head); font-weight: 600; color: var(--navy-ink); display: block; font-size: .98rem; }
+  .testi-person span { font-size: .85rem; color: var(--muted); }
+
+  /* ---------- For you ---------- */
+  .foryou { background: var(--white); }
+  .foryou-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; max-width: 880px; margin: 0 auto; }
+  .foryou-card {
+    display: flex; gap: 16px; align-items: flex-start; background: var(--cream);
+    border: 1px solid var(--line); border-left: 5px solid var(--blue); border-radius: 16px; padding: 26px 26px;
+  }
+  .foryou-card:nth-child(2) { border-left-color: var(--peach); }
+  .foryou-card .check { flex: none; width: 30px; height: 30px; border-radius: 50%; background: var(--navy); color: var(--white); display: grid; place-items: center; }
+  .foryou-card:nth-child(1) .check { background: var(--blue); }
+  .foryou-card:nth-child(2) .check { background: var(--peach); color: var(--navy-ink); }
+  .foryou-card .check svg { width: 17px; height: 17px; }
+  .foryou-card p { font-size: 1.06rem; color: var(--text); }
+
+  /* ---------- About Cate ---------- */
+  .about { background: var(--cream-2); }
+  .about-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 4vw, 56px); align-items: center; }
+  .about-photo { position: relative; border-radius: 26px; overflow: hidden; box-shadow: var(--shadow-lg); aspect-ratio: 4 / 5; border: 6px solid var(--white); }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 25%; }
+  .about h2 { font-size: clamp(1.7rem, 4vw, 2.6rem); font-weight: 800; }
+  .about h2 .role { display: block; font-size: .58em; font-weight: 600; color: var(--navy); margin-top: 8px; }
+  .about .sub { font-family: var(--font-head); font-weight: 600; color: var(--text); font-size: 1.12rem; margin: 22px 0 22px; }
+  .about-list { list-style: none; display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+  .about-list li { display: flex; gap: 14px; align-items: flex-start; font-size: 1.06rem; }
+  .about-list li .b { flex: none; width: 28px; height: 28px; border-radius: 9px; background: var(--blue); color: var(--navy-ink); display: grid; place-items: center; }
+  .about-list li .b svg { width: 16px; height: 16px; }
+
+  /* ---------- Final CTA ---------- */
+  .final { background: linear-gradient(160deg, var(--navy) 0%, var(--navy-ink) 100%); position: relative; overflow: hidden; text-align: center; }
+  .final::before { content: ""; position: absolute; left: -60px; bottom: -80px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(244,184,163,0.35), transparent 70%); border-radius: 50%; }
+  .final::after { content: ""; position: absolute; right: -60px; top: -80px; width: 280px; height: 280px; background: radial-gradient(circle, rgba(125,181,232,0.35), transparent 70%); border-radius: 50%; }
+  .final .wrap { position: relative; z-index: 2; }
+  .final img.fl { height: 72px; margin: 0 auto 26px; display: block; }
+  .final h2 { color: var(--white); font-size: clamp(1.8rem, 4.4vw, 2.9rem); font-weight: 800; max-width: 16em; margin: 0 auto 16px; }
+  .final p { color: rgba(255,255,255,0.78); font-size: 1.12rem; max-width: 30em; margin: 0 auto 34px; }
+  .final .hand { color: var(--blue); font-size: 1.6rem; display: block; margin-bottom: 4px; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--navy-ink); color: rgba(255,255,255,0.7); padding: 40px 0; text-align: center; }
+  footer img { height: 100px; margin-bottom: 16px; }
+  footer .legal { font-size: .82rem; letter-spacing: .04em; }
+  footer .legal b { color: var(--white); }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 100; display: none;
+    background: rgba(31, 43, 80, 0.6); backdrop-filter: blur(4px);
+    align-items: center; justify-content: center; padding: 20px;
+  }
+  .modal-overlay.open { display: flex; animation: fadeIn .25s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .modal {
+    position: relative; width: 100%; max-width: 480px; background: var(--white);
+    border-radius: 24px; box-shadow: var(--shadow-lg); overflow: hidden;
+    animation: popUp .3s cubic-bezier(.2,.9,.3,1.2);
+    max-height: 92vh; display: flex; flex-direction: column;
+  }
+  @keyframes popUp { from { opacity: 0; transform: translateY(20px) scale(.96); } to { opacity: 1; transform: none; } }
+  .modal-head { display: flex; align-items: center; gap: 12px; padding: 18px 20px; border-bottom: 1px solid var(--line); background: var(--cream); }
+  .modal-head img { height: 34px; }
+  .modal-head .mh-txt b { font-family: var(--font-head); font-weight: 700; color: var(--navy-ink); font-size: .98rem; display: block; line-height: 1.1; }
+  .modal-head .mh-txt span { font-size: .8rem; color: var(--muted); }
+  .modal-close {
+    margin-left: auto; width: 38px; height: 38px; border-radius: 50%; border: none; cursor: pointer;
+    background: var(--white); color: var(--navy-ink); display: grid; place-items: center; box-shadow: var(--shadow-sm);
+    transition: background .15s ease, transform .15s ease;
+  }
+  .modal-close:hover { background: var(--peach-soft); transform: rotate(90deg); }
+  .modal-close svg { width: 18px; height: 18px; }
+  .modal-body { padding: 0; overflow: auto; -webkit-overflow-scrolling: touch; }
+  #popup-I4CnHrPxFMNlqZe82tHp { display: block !important; width: 100%; min-height: 560px; border: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-figure { max-width: 420px; margin: 8px auto 0; }
+    .learn-grid, .testi-grid { grid-template-columns: 1fr; }
+    .num-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-photo { max-width: 380px; margin: 0 auto; }
+  }
+  @media (max-width: 620px) {
+    .header-cta { display: none; }
+    .pain-list { grid-template-columns: 1fr; }
+    .pain-full { grid-column: auto; }
+    .foryou-grid { grid-template-columns: 1fr; }
+    .hero-cta-row, .btn--lg { width: 100%; }
+    .hero-cta-row .btn { width: 100%; }
+    .brand-text span { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <div class="wrap header-inner">
+    <a class="brand" href="#" aria-label="Club C × Cate Barale">
+      <img src="assets/logo-lockup.png" alt="Club C × Cate Barale" />
+    </a>
+    <button class="btn header-cta" data-open-form type="button" style="background-color: rgb(125, 181, 232)"><span style="color: #f7f6f3">Ver clase</span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="dot"></span>Clase gratuita · 15 minutos</span>
+      <h1>La mejor manera de <span class="accent">dejar de depender del 1&#8209;a&#8209;1</span></h1>
+      <p class="lead">Un método simple para combinar lo presencial con lo online, <b>ganar tiempo</b> y construir <b>ingresos sin techo</b> — pensado para Profes, Kines y Nutris.</p>
+      <div class="hero-cta-row">
+        <button class="btn btn--lg" data-open-form type="button">
+          Ver clase gratuita
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <div class="hero-note">Acceso inmediato · Asesoría gratuita</div>
+      </div>
+      <div class="who-tags">
+        <span class="tag"><span class="emoji">💪</span>Profes</span>
+        <span class="tag"><span class="emoji">🦴</span>Kines</span>
+        <span class="tag"><span class="emoji">🍎</span>Nutris</span>
+      </div>
+    </div>
+    <div class="hero-figure">
+      <div class="hero-photo">
+        <img src="assets/cate.jpg" alt="Cate Barale" />
+      </div>
+      <div class="hero-chip">+50k USD facturados</div>
+      <div class="hero-badge">
+        <span class="pulse" style="background-color: rgb(125, 181, 232)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></span>
+        <span><b>+100 profesionales</b><span>ya aprendieron con Cate</span></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAIN POINTS ============ -->
+<section class="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>¿Te suena familiar?</span>
+      <h2>Seguro te pasó que…</h2>
+    </div>
+    <div class="pain-list">
+      <div class="pain-item"><span class="n">1</span><p>Te <b>cancelaron una sesión o clase</b> sobre la hora.</p></div>
+      <div class="pain-item"><span class="n">2</span><p>Estás trabajando de algo que no te gusta solo <b>para llegar a fin de mes</b>.</p></div>
+      <div class="pain-item"><span class="n">3</span><p>Te formaste y sos muy dedicado con tus pacientes/alumnos, pero <b>no se ve reflejado en tu cuenta bancaria</b>.</p></div>
+      <div class="pain-item"><span class="n">4</span><p>Si te enfermás <b>no cobrás</b>, y si tu cliente se va de vacaciones, tampoco.</p></div>
+      <div class="pain-item pain-full"><span class="n">5</span><p>Entendés que <b>hay una forma más rentable</b> de brindar tu servicio… pero todavía no sabés cómo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BAND 1 ============ -->
+<section class="cta-band">
+  <div class="wrap">
+    <h2>¿Hasta cuándo vas a seguir trabajando todo el día, cobrando <span class="hl">menos de lo que valés</span> y sin tiempo para vos?</h2>
+    <button class="btn btn--peach btn--lg" data-open-form type="button">Quiero ver la clase</button>
+  </div>
+</section>
+
+<!-- ============ WHAT YOU'LL LEARN ============ -->
+<section class="learn">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>El plan de la clase</span>
+      <h2>¿Qué vas a aprender en la clase?</h2>
+      <p>En solo 15 minutos te llevás claridad concreta sobre cómo dar el salto.</p>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+        <h3>La oportunidad del mundo <span class="em">online</span></h3>
+        <p>Las herramientas digitales que te permiten generar ingresos recurrentes.</p>
+      </div>
+      <div class="learn-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18M3 12h18M3 17h11"/><circle cx="19" cy="17" r="2.4"/></svg></span>
+        <h3>Sesión suelta vs. <span class="em">programa</span></h3>
+        <p>Ofrecé un servicio que dé resultados sin la necesidad de estar siempre ahí.</p>
+      </div>
+      <div class="learn-card">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg></span>
+        <h3><span class="em">Diferenciarte</span> de tus colegas</h3>
+        <p>Las bases para convertirte en autoridad y referente de tu rubro.</p>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 44px;">
+      <button class="btn btn--lg" data-open-form type="button">Ver la clase gratuita</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NUMBERS ============ -->
+<section class="numbers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Los números hablan</span>
+      <h2>La era digital llegó para quedarse</h2>
+      <p style="color: rgba(255,255,255,0.72);">Te podés adaptar y potenciar, o quedarte igual a como estás hoy.</p>
+    </div>
+    <div class="num-grid">
+      <div class="num-card"><div class="big">+50k</div><div class="lbl">USD facturados con el método de Club C</div></div>
+      <div class="num-card"><div class="big">+100</div><div class="lbl">profesionales formados en marketing y ventas</div></div>
+      <div class="num-card"><div class="big">15<span style="font-size:.5em;">min</span></div><div class="lbl">es todo lo que necesitás para empezar a cambiar</div></div>
+    </div>
+    <p class="num-foot">*Datos reales de uno de mis negocios, que te cuento dentro de la clase gratuita.</p>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testi">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>Historias reales</span>
+      <h2>Profes, Kines y Nutris que ya dieron el salto</h2>
+      <p>Mismo punto de partida que vos. Resultados que hoy son su realidad.</p>
+    </div>
+    <div class="testi-grid">
+      <!-- Testimonio 1 -->
+      <article class="testi-card">
+        <div class="video-ph" data-open-form>
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">video testimonio 01</span>
+        </div>
+        <div class="testi-body">
+          <div class="stars" aria-label="5 estrellas">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+          </div>
+          <p class="testi-quote">“Como profe, nunca me había capacitado en nada de ventas o marketing. Trabajando con el Club C encontré esa estrategia que me estaba faltando para potenciar mi negocio. En 2 semanas pude facturar lo mismo que hacía trabajando con casi 70 clientes.”</p>
+          <div class="testi-person">
+            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span><b>Gino Ryll</b><span>Profe de Educación Física</span></span>
+          </div>
+        </div>
+      </article>
+      <!-- Testimonio 2 -->
+      <article class="testi-card">
+        <div class="video-ph" data-open-form>
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">video testimonio 02</span>
+        </div>
+        <div class="testi-body">
+          <div class="stars" aria-label="5 estrellas">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+          </div>
+          <p class="testi-quote">“No quería estar en enero/febrero con el consultorio en baja, ni llegar dentro de unos años dependiendo exclusivamente del trabajo 1 a 1. Había hecho otras capacitaciones en marketing, pero acá encontré el acompañamiento y la guía que me faltaban: empecé a trabajar con pacientes nuevos y llené los cupos de talleres en enero y febrero.”</p>
+          <div class="testi-person">
+            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span><b>Agustina Bouvet</b><span>Lic. en Kinesiología</span></span>
+          </div>
+        </div>
+      </article>
+      <!-- Testimonio 3 -->
+      <article class="testi-card">
+        <div class="video-ph" data-open-form>
+          <span class="play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          <span class="vlabel">video testimonio 03</span>
+        </div>
+        <div class="testi-body">
+          <div class="stars" aria-label="5 estrellas">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.8 .6-5.1 4.6 1.5 6.7L12 17.3 5.9 20.8l1.5-6.7L2.3 9.5l6.8-.6z"/></svg>
+          </div>
+          <p class="testi-quote">“A fin de año no lograba cubrir el alquiler del consultorio, y eso me venía pasando hace 5 años. Llegué a pensar que me había equivocado de profesión. Con la Formación del Club C logré una facturación récord en enero, superando incluso a los meses buenos. Con eso pude planificar y tomarme unas vacaciones que hacía tiempo no me permitía.”</p>
+          <div class="testi-person">
+            <span class="avatar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-5 0-9 2.5-9 6v2h18v-2c0-3.5-4-6-9-6z"/></svg></span>
+            <span><b>Luis &laquo;Lucho&raquo; Giménez</b><span>Lic. en Nutrición</span></span>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOR YOU IF ============ -->
+<section class="foryou">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow"><span class="dot"></span>¿Es para vos?</span>
+      <h2>Esta clase gratuita es para vos si…</h2>
+    </div>
+    <div class="foryou-grid">
+      <div class="foryou-card">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <p>Cobrás por sesión o por mes y querés <b>aprender otra manera</b> de ofrecer tu servicio.</p>
+      </div>
+      <div class="foryou-card">
+        <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <p>Querés adquirir <b>estrategias validadas</b> para transformarte en referente de tu rubro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT CATE ============ -->
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="about-photo">
+      <img src="assets/cate.jpg" alt="Cate Barale" />
+    </div>
+    <div class="about-copy">
+      <span class="hand" style="font-size:1.5rem;">Hola, soy Cate 👋</span>
+      <h2>Cate Barale<span class="role">Profe, Kine y fundadora del Club C</span></h2>
+      <p class="sub">Las claves que vas a ver en esta clase son las mismas que apliqué para:</p>
+      <ul class="about-list">
+        <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></span>Triplicar mi facturación.</li>
+        <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 11a4 4 0 10-8 0M3 21v-1a5 5 0 015-5h8a5 5 0 015 5v1"/></svg></span>Ayudar a muchas más personas.</li>
+        <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20M12 2a15 15 0 010 20M12 2a15 15 0 000 20"/><circle cx="12" cy="12" r="10"/></svg></span>Irme 2 meses de viaje sin dejar de generar ingresos.</li>
+        <li><span class="b"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.9 6.8 19.2l1-5.8L3.5 9.2l5.9-.9z"/></svg></span>Las mismas que hoy usan los Profes, Kines y Nutris con resultados.</li>
+      </ul>
+      <button class="btn btn--lg" data-open-form type="button">Ver la clase gratuita</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="final">
+  <div class="wrap">
+    <img class="fl" src="assets/club-c-logo.png" alt="Club C" />
+    <span class="hand">Te espero adentro</span>
+    <h2>Dejá de cobrar por sesión. Empezá a construir ingresos sin techo.</h2>
+    <p>Son 15 minutos que pueden cambiar la forma en la que trabajás. ¿Te lo vas a perder?</p>
+    <button class="btn btn--peach btn--lg" data-open-form type="button">
+      Ver clase gratuita
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <img src="assets/club-c-logo.png" alt="Club C" />
+    <p class="legal">Todos los derechos reservados · <b>Club C</b> — Cate Barale</p>
+  </div>
+</footer>
+
+<!-- ============ MODAL ============ -->
+<div class="modal-overlay" id="formModal" role="dialog" aria-modal="true" aria-label="Registro a la clase gratuita">
+  <div class="modal">
+    <div class="modal-head">
+      <img src="assets/club-c-logo.png" alt="Club C" />
+      <span class="mh-txt"><b>Registrate a la clase</b><span>Clase gratuita de 15 minutos</span></span>
+      <button class="modal-close" id="modalClose" type="button" aria-label="Cerrar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <iframe
+        src="https://links.luxoradigital.com/widget/form/I4CnHrPxFMNlqZe82tHp"
+        id="popup-I4CnHrPxFMNlqZe82tHp"
+        data-layout="{'id':'POPUP'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name=" VSL - Registro - ADS"
+        data-height="608"
+        data-layout-iframe-id="popup-I4CnHrPxFMNlqZe82tHp"
+        data-form-id="I4CnHrPxFMNlqZe82tHp"
+        title=" VSL - Registro - ADS"
+        data-modal-height="500">
+      </iframe>
+    </div>
+  </div>
+</div>
+
+<script src="https://links.luxoradigital.com/js/form_embed.js"></script>
+<script>
+  (function () {
+    var modal = document.getElementById('formModal');
+    var closeBtn = document.getElementById('modalClose');
+
+    function openForm() {
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeForm() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open-form]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        openForm();
+      });
+    });
+
+    closeBtn.addEventListener('click', closeForm);
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeForm();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeForm();
+    });
+  })();
+</script>
+
+</body>
+</html>
