@@ -625,52 +625,51 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
-    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-body">
+      <iframe
+        src="https://links.luxoradigital.com/widget/form/I4CnHrPxFMNlqZe82tHp"
+        id="popup-I4CnHrPxFMNlqZe82tHp"
+        data-layout="{'id':'POPUP'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name=" VSL - Registro - ADS"
+        data-height="608"
+        data-layout-iframe-id="popup-I4CnHrPxFMNlqZe82tHp"
+        data-form-id="I4CnHrPxFMNlqZe82tHp"
+        title=" VSL - Registro - ADS"
+        data-modal-height="500">
+      </iframe>
+    </div>
   </div>
 </div>
-
-<!-- Iframe template: we clone this into the modal each time it opens so the form
-     loads fresh every time, even after the user closes and reopens it. -->
-<template id="formIframeTpl">
-  <iframe
-    src="https://links.luxoradigital.com/widget/form/I4CnHrPxFMNlqZe82tHp"
-    id="popup-I4CnHrPxFMNlqZe82tHp"
-    data-layout="{'id':'POPUP'}"
-    data-trigger-type="alwaysShow"
-    data-trigger-value=""
-    data-activation-type="alwaysActivated"
-    data-activation-value=""
-    data-deactivation-type="neverDeactivate"
-    data-deactivation-value=""
-    data-form-name=" VSL - Registro - ADS"
-    data-height="608"
-    data-layout-iframe-id="popup-I4CnHrPxFMNlqZe82tHp"
-    data-form-id="I4CnHrPxFMNlqZe82tHp"
-    title=" VSL - Registro - ADS"
-    data-modal-height="500">
-  </iframe>
-</template>
 
 <script src="https://links.luxoradigital.com/js/form_embed.js"></script>
 <script>
   (function () {
     var modal = document.getElementById('formModal');
     var closeBtn = document.getElementById('modalClose');
-    var modalBody = document.getElementById('modalBody');
-    var tpl = document.getElementById('formIframeTpl');
+    var iframe = document.getElementById('popup-I4CnHrPxFMNlqZe82tHp');
+    var iframeSrc = iframe.getAttribute('src');
+    var hasOpened = false;
 
     function openForm() {
-      // Inject a fresh iframe every time so the form reloads on each open
-      modalBody.innerHTML = '';
-      modalBody.appendChild(tpl.content.cloneNode(true));
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
+      // Reload the iframe on every reopen so the user gets a fresh form,
+      // but skip the first time so we don't waste the initial load that
+      // form_embed.js already wired up for tracking.
+      if (hasOpened) {
+        iframe.src = iframeSrc;
+      }
+      hasOpened = true;
     }
     function closeForm() {
       modal.classList.remove('open');
       document.body.style.overflow = '';
-      // Remove the iframe so it stops loading and resets state for next open
-      modalBody.innerHTML = '';
     }
 
     document.querySelectorAll('[data-open-form]').forEach(function (el) {
