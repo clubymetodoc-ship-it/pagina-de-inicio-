@@ -687,6 +687,17 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && modal.classList.contains('open')) closeForm();
     });
+
+    // When the embedded form is submitted, continue to the next step of the funnel
+    var NEXT_URL = 'https://catebarale.com/vsl-clase-gratuita-15min';
+    window.addEventListener('message', function (e) {
+      if (!e.origin || e.origin.indexOf('luxoradigital.com') === -1) return;
+      var d = e.data || {};
+      var msg = typeof d === 'string' ? d : (d.type || d.eventName || d.event || '');
+      if (/form[-_]?submit/i.test(String(msg))) {
+        window.location.href = NEXT_URL;
+      }
+    });
   })();
 </script>
 
