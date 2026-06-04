@@ -281,6 +281,17 @@
   footer img { height: 100px; margin-bottom: 16px; }
   footer .legal { font-size: .82rem; letter-spacing: .04em; }
   footer .legal b { color: var(--white); }
+  .footer-links {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    max-width: 720px; margin: 0 auto 22px; padding: 22px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .footer-links a {
+    font-family: var(--font-head); font-weight: 600; font-size: .95rem;
+    color: rgba(255,255,255,0.85); text-decoration: none; text-align: center;
+    transition: color .18s ease;
+  }
+  .footer-links a:hover { color: var(--peach); }
 
   /* ---------- Modal ---------- */
   .modal-overlay {
@@ -596,6 +607,11 @@
 <footer>
   <div class="wrap">
     <img src="assets/club-c-logo.png" alt="Club C" />
+    <nav class="footer-links" aria-label="Enlaces legales">
+      <a href="https://catebarale.com/polticas-de-privacidad---club-c" target="_blank" rel="noopener">Políticas de privacidad</a>
+      <a href="https://catebarale.com/tc" target="_blank" rel="noopener">Términos y condiciones</a>
+      <a href="https://catebarale.com/contacto" target="_blank" rel="noopener">Datos de contacto</a>
+    </nav>
     <p class="legal">Todos los derechos reservados · <b>Club C</b> — Cate Barale</p>
   </div>
 </footer>
