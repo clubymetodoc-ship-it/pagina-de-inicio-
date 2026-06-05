@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Club C — ¡Gracias por tu consulta!</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* ===========  THANKS PAGE  =========== */
+  .thanks {
+    position: relative;
+    background: var(--primary-deep);
+    color: var(--accessory);
+    padding: 130px 0 90px;
+    overflow: hidden;
+  }
+  .thanks::before {
+    content: "";
+    position: absolute;
+    top: -160px; right: -160px;
+    width: 540px; height: 540px;
+    background: radial-gradient(circle at center, rgba(125, 181, 232, 0.22), transparent 65%);
+    pointer-events: none;
+  }
+  .thanks::after {
+    content: "";
+    position: absolute;
+    bottom: -180px; left: -160px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle at center, rgba(244, 184, 163, 0.18), transparent 65%);
+    pointer-events: none;
+  }
+  .thanks > .container { position: relative; z-index: 1; }
+
+  .thanks-grid {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .thanks-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-accent);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--secondary);
+    margin-bottom: 18px;
+  }
+  .thanks-eyebrow .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--tertiary);
+    box-shadow: 0 0 0 6px rgba(244, 184, 163, 0.18);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.15); opacity: 0.7; }
+  }
+
+  .thanks-title {
+    font-family: var(--f-title);
+    font-weight: 900;
+    font-size: clamp(72px, 9.5vw, 168px);
+    line-height: 0.88;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    color: var(--accessory);
+    margin: 0 0 28px;
+  }
+  .thanks-title em {
+    font-style: normal;
+    color: var(--tertiary);
+  }
+  .thanks-script {
+    display: block;
+    font-family: var(--f-accent);
+    font-style: italic;
+    font-weight: 600;
+    font-size: clamp(34px, 3.6vw, 52px);
+    color: var(--secondary);
+    margin-top: 12px;
+    letter-spacing: 0;
+    line-height: 1.1;
+  }
+
+  .thanks-lead {
+    font-family: var(--f-body);
+    font-size: 19px;
+    line-height: 1.6;
+    color: rgba(247, 246, 243, 0.78);
+    max-width: 52ch;
+    margin: 0 auto 36px;
+  }
+  .thanks-lead strong { color: var(--accessory); font-weight: 700; }
+
+  .thanks-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding: 18px 22px;
+    border: 1px solid rgba(247, 246, 243, 0.16);
+    border-radius: var(--r-lg);
+    background: rgba(247, 246, 243, 0.04);
+    margin: 0 auto 40px;
+    max-width: 540px;
+    text-align: left;
+  }
+  .thanks-meta-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--tertiary);
+    color: var(--primary-deep);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .thanks-meta-text {
+    font-family: var(--f-body);
+    font-size: 15.5px;
+    line-height: 1.5;
+    color: rgba(247, 246, 243, 0.86);
+  }
+  .thanks-meta-text strong {
+    display: block;
+    font-family: var(--f-title);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accessory);
+    margin-bottom: 2px;
+  }
+
+  .thanks-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .thanks-actions .btn { font-size: 15px; }
+
+  /* ===========  YOUTUBE CARD  =========== */
+  .yt-stack {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 920px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  .yt-tag {
+    align-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--tertiary);
+    color: var(--primary-deep);
+    padding: 10px 18px;
+    border-radius: var(--r-pill);
+    font-family: var(--f-title);
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .yt-tag svg { width: 16px; height: 16px; }
+
+  .yt-feature {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: linear-gradient(135deg, #3a4f8f 0%, #1a2547 100%);
+    aspect-ratio: 16 / 9;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(247, 246, 243, 0.06);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    text-decoration: none;
+  }
+  .yt-feature:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 40px 90px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(247, 246, 243, 0.1);
+  }
+  .yt-feature-bg {
+    position: absolute; inset: 0;
+    background-image: url("assets/cate-portrait.jpg");
+    background-size: cover;
+    background-position: center 25%;
+    filter: brightness(0.62) contrast(1.05);
+  }
+  .yt-feature-overlay {
+    position: absolute; inset: 0;
+    background:
+      linear-gradient(to top, rgba(20, 25, 43, 0.85) 0%, transparent 60%),
+      linear-gradient(to right, rgba(58, 79, 143, 0.35), transparent 60%);
+  }
+  .yt-feature-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 86px; height: 86px;
+    border-radius: 50%;
+    background: var(--tertiary);
+    color: var(--primary-deep);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 20px 50px rgba(244, 184, 163, 0.45);
+    transition: transform 0.25s ease;
+  }
+  .yt-feature:hover .yt-feature-play { transform: translate(-50%, -50%) scale(1.08); }
+  .yt-feature-play svg { width: 32px; height: 32px; margin-left: 4px; }
+
+  .yt-feature-caption {
+    position: absolute;
+    left: 28px; right: 28px; bottom: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .yt-feature-caption .ep {
+    font-family: var(--f-accent);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--tertiary);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .yt-feature-caption .title {
+    font-family: var(--f-title);
+    font-weight: 800;
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--accessory);
+    text-transform: none;
+    margin: 0;
+    max-width: 26ch;
+  }
+  .yt-feature-caption .dur {
+    font-family: var(--f-body);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accessory);
+    padding: 6px 12px;
+    background: rgba(20, 25, 43, 0.72);
+    border-radius: var(--r-pill);
+    flex-shrink: 0;
+  }
+
+  .yt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(247, 246, 243, 0.12);
+    border-radius: var(--r-lg);
+    background: rgba(247, 246, 243, 0.03);
+    overflow: hidden;
+  }
+  .yt-row {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 18px;
+    align-items: center;
+    padding: 14px 18px 14px 14px;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid rgba(247, 246, 243, 0.08);
+    transition: background 0.15s;
+  }
+  .yt-row:last-child { border-bottom: none; }
+  .yt-row:hover { background: rgba(247, 246, 243, 0.06); }
+
+  .yt-thumb {
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: var(--primary);
+  }
+  .yt-thumb-bg { position: absolute; inset: 0; background-size: cover; background-position: center; filter: brightness(0.75); }
+  .yt-thumb-play {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: rgba(247, 246, 243, 0.95);
+    color: var(--primary-deep);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .yt-thumb-play svg { width: 12px; height: 12px; margin-left: 2px; }
+  .yt-thumb-dur {
+    position: absolute;
+    bottom: 5px; right: 5px;
+    font-family: var(--f-body);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accessory);
+    background: rgba(20, 25, 43, 0.85);
+    padding: 2px 6px;
+    border-radius: 3px;
+    line-height: 1.2;
+  }
+
+  .yt-row-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+  .yt-row-ep {
+    font-family: var(--f-title);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+  .yt-row-title {
+    font-family: var(--f-title);
+    font-weight: 700;
+    font-size: 15.5px;
+    line-height: 1.3;
+    color: var(--accessory);
+    margin: 0;
+    text-transform: none;
+    letter-spacing: -0.005em;
+  }
+  .yt-row-arrow {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(247, 246, 243, 0.08);
+    color: var(--accessory);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.18s, transform 0.18s;
+    flex-shrink: 0;
+  }
+  .yt-row:hover .yt-row-arrow { background: var(--tertiary); color: var(--primary-deep); transform: translateX(3px); }
+  .yt-row-arrow svg { width: 16px; height: 16px; }
+
+  /* ===========  CTA STRIP  =========== */
+  .yt-cta {
+    background: var(--ink);
+    color: var(--accessory);
+    padding: 110px 0 120px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .yt-cta::before {
+    content: "MIRÁ EL CANAL — MIRÁ EL CANAL — MIRÁ EL CANAL — MIRÁ EL CANAL — ";
+    position: absolute;
+    top: 30px; left: 0; right: 0;
+    font-family: var(--f-title);
+    font-weight: 900;
+    font-size: clamp(60px, 9vw, 140px);
+    line-height: 1;
+    color: rgba(247, 246, 243, 0.04);
+    white-space: nowrap;
+    letter-spacing: -0.04em;
+    pointer-events: none;
+  }
+  .yt-cta-inner { position: relative; z-index: 1; }
+  .yt-cta-head { max-width: 760px; margin: 0 auto 56px; }
+  .yt-cta h2 {
+    font-family: var(--f-title);
+    font-weight: 900;
+    font-size: clamp(40px, 5.5vw, 80px);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+    color: var(--accessory);
+    margin: 18px auto 22px;
+    max-width: 18ch;
+    text-wrap: balance;
+  }
+  .yt-cta h2 em { font-style: normal; color: var(--tertiary); }
+  .yt-cta-head > p {
+    font-family: var(--f-body);
+    font-size: 18px;
+    line-height: 1.55;
+    color: rgba(247, 246, 243, 0.7);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .yt-cta-foot { margin-top: 56px; }
+  .yt-cta-foot .btn { padding: 22px 36px; font-size: 16px; }
+  .yt-cta-foot .btn svg { width: 22px; height: 22px; }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" data-screen-label="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/logo-club-c.png" alt="Club C" />
+    <span>Club <em>C</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html#metodo">El Método</a>
+    <a href="index.html#programa">Programa</a>
+    <a href="index.html#cate">Cate</a>
+    <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="nav-cta">Ver el canal</a>
+  </div>
+</nav>
+
+<!-- ============ THANKS / HERO ============ -->
+<header class="thanks" data-screen-label="gracias">
+  <div class="container">
+    <div class="thanks-grid">
+
+      <div class="thanks-eyebrow">
+        <span class="dot"></span>
+        Recibimos tu consulta
+      </div>
+
+      <h1 class="thanks-title">
+        ¡Gracias!
+        <span class="thanks-script">por confiar en el Club.</span>
+      </h1>
+
+      <p class="thanks-lead">
+        Tu mensaje ya está en nuestro equipo. <strong>Te respondemos por WhatsApp en menos de 48 hs</strong>
+        para coordinar la entrevista de admisión y resolver todas tus dudas.
+      </p>
+
+      <div class="thanks-meta">
+        <div class="thanks-meta-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+          </svg>
+        </div>
+        <div class="thanks-meta-text">
+          <strong>Próximo paso</strong>
+          Te vamos a escribir desde el número oficial del Club. Revisá tu WhatsApp en las próximas horas.
+        </div>
+      </div>
+
+      <div class="thanks-actions">
+        <a href="#canal" class="btn btn-accent">
+          Mientras tanto, conocenos
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="index.html" class="btn btn-outline">Volver al inicio</a>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ============ CTA STRIP ============ -->
+<section class="yt-cta" id="canal" data-screen-label="cta-canal">
+  <div class="container">
+    <div class="yt-cta-inner">
+
+      <div class="yt-cta-head">
+        <div class="yt-tag">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a2.99 2.99 0 00-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569a2.99 2.99 0 00-2.107 2.117C0 8.083 0 12 0 12s0 3.917.502 5.814a2.99 2.99 0 002.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.99 2.99 0 002.107-2.117C24 15.917 24 12 24 12s0-3.917-.502-5.814zM9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>
+          </svg>
+          Podcast en YouTube
+        </div>
+        <h2>Conocenos en <em>nuestro canal<br/>de YouTube.</em></h2>
+        <p>
+          Capítulos de podcast con historias reales de profesionales del fitness y la salud que ya viven
+          de su consultorio digital. Suscribite y empezá a entrenarte mientras te respondemos.
+        </p>
+      </div>
+
+      <div class="yt-stack">
+        <!-- Featured episode -->
+        <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="yt-feature">
+          <div class="yt-feature-bg"></div>
+          <div class="yt-feature-overlay"></div>
+          <div class="yt-feature-play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+          <div class="yt-feature-caption">
+            <div>
+              <div class="ep">episodio destacado</div>
+              <h3 class="title">Cómo convertir tu título profesional en un negocio digital rentable.</h3>
+            </div>
+            <span class="dur">42 min</span>
+          </div>
+        </a>
+
+        <!-- Episode list -->
+        <div class="yt-list">
+          <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="yt-row">
+            <div class="yt-thumb">
+              <div class="yt-thumb-bg" style="background-image: url('assets/community-class.jpg');"></div>
+              <div class="yt-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="yt-thumb-dur">28:14</span>
+            </div>
+            <div class="yt-row-meta">
+              <span class="yt-row-ep">Episodio 02 · Marketing</span>
+              <h4 class="yt-row-title">Por qué nadie te enseñó a vender (y cómo aprender ahora).</h4>
+            </div>
+            <span class="yt-row-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="yt-row">
+            <div class="yt-thumb">
+              <div class="yt-thumb-bg" style="background-image: url('assets/team-park.jpg');"></div>
+              <div class="yt-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="yt-thumb-dur">35:02</span>
+            </div>
+            <div class="yt-row-meta">
+              <span class="yt-row-ep">Episodio 03 · Casos reales</span>
+              <h4 class="yt-row-title">De colega freelance a marca profesional: el camino del Club.</h4>
+            </div>
+            <span class="yt-row-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+
+          <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="yt-row">
+            <div class="yt-thumb">
+              <div class="yt-thumb-bg" style="background-image: url('assets/team-beach.jpg');"></div>
+              <div class="yt-thumb-play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+              <span class="yt-thumb-dur">24:48</span>
+            </div>
+            <div class="yt-row-meta">
+              <span class="yt-row-ep">Episodio 04 · Mentalidad</span>
+              <h4 class="yt-row-title">Cobrar lo que valés sin sentirte culpable.</h4>
+            </div>
+            <span class="yt-row-arrow">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <div class="yt-cta-foot">
+        <a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener" class="btn btn-accent">
+          <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a2.99 2.99 0 00-2.107-2.117C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.391.569a2.99 2.99 0 00-2.107 2.117C0 8.083 0 12 0 12s0 3.917.502 5.814a2.99 2.99 0 002.107 2.117C4.495 20.5 12 20.5 12 20.5s7.505 0 9.391-.569a2.99 2.99 0 002.107-2.117C24 15.917 24 12 24 12s0-3.917-.502-5.814zM9.546 15.568V8.432L15.818 12l-6.272 3.568z"/>
+          </svg>
+          Ir al canal de YouTube
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="footer" style="padding: 32px 0">
+  <div class="container">
+    <div class="footer-top" style="padding: 0 0 20px">
+      <div class="footer-brand">
+        <img src="assets/logo-club-c.png" alt="Club C" style="width: 200px" />
+        <p>Formación en marketing y ventas digitales para profesionales del fitness y la salud.</p>
+      </div>
+      <div>
+        <h5>Formaciones</h5>
+        <ul>
+          <li><a href="index.html#metodo">Método C</a></li>
+          <li><a href="index.html#ascenso">Método Ascenso</a></li>
+          <li><a href="index.html#programa">Programa formativo</a></li>
+          <li><a href="index.html#aplicar">Aplicar al Club</a></li>
+        </ul>
+      </div>
+      <div style="height: 125px">
+        <h5>Club C</h5>
+        <ul>
+          <li><a href="index.html#cate">Sobre Cate</a></li>
+          <li><a href="index.html#faq">Preguntas frecuentes</a></li>
+          <li><a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener">YouTube</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="https://www.youtube.com/@catebarale" target="_blank" rel="noopener">YouTube</a></li>
+          <li><a href="mailto:clubymetodo.c@catebarale.com">clubymetodo.c@catebarale.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" style="padding: 10px 0 0">
+      <div>© 2026 Club C · Cate Barale. Todos los derechos reservados.</div>
+      <div><a href="#">Términos</a> · <a href="#">Privacidad</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
