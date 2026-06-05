@@ -333,3 +333,32 @@ try { window.parent.postMessage({ type: '__edit_mode_available' }, '*'); } catch
     if (e.key === 'Escape' && !modal.hidden) close();
   });
 })();
+
+// ============================================================
+//   GHL POPUP BRIDGE
+//   GHL's Popup element doesn't support an "On click" trigger.
+//   Workaround: in the GHL page builder, add a hidden native Button
+//   with action "On Click → Open Popup" and assign it the custom
+//   class .gh-popup-trigger. The handler below intercepts clicks on
+//   any [data-open-form] CTA and programmatically clicks the hidden
+//   GHL button, so the popup opens through GHL's own handler and the
+//   funnel records the conversion natively.
+// ============================================================
+(function () {
+  function fireGhlPopup() {
+    var wrappers = document.querySelectorAll('.gh-popup-trigger');
+    for (var i = 0; i < wrappers.length; i++) {
+      var w = wrappers[i];
+      var clickable = w.matches('a, button') ? w : w.querySelector('a, button');
+      if (clickable) { clickable.click(); return true; }
+    }
+    return false;
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-open-form]');
+    if (!trigger) return;
+    e.preventDefault();
+    fireGhlPopup();
+  });
+})();

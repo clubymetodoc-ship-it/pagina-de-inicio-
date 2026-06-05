@@ -1285,6 +1285,11 @@ section { position: relative; }
   max-width: 980px;
   margin: 0 auto;
 }
+.cta-final-action {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
 .cta-final-title {
   font-family: var(--f-title);
   font-weight: 900;
