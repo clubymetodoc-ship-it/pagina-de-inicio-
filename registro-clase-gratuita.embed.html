@@ -586,13 +586,35 @@
   </div>
 </footer>
 
-<!-- ============ FORM TRIGGER ============
-  The form modal is intentionally NOT embedded here. Wire the GHL native
-  popup form to fire on any element matching the CSS selector below — that
-  way the popup is rendered/tracked by GHL itself and counts in funnel stats.
+<!-- ============ POPUP BRIDGE ============
+  GHL's Popup element doesn't support an "on click" trigger natively.
+  The workaround: in the GHL page builder, add a hidden native Button
+  with action "On Click → Open Popup" and give it the custom class
+  .gh-popup-trigger. The script below intercepts clicks on any of our
+  CTAs ([data-open-form]) and programmatically clicks the hidden GHL
+  button, so the popup opens through GHL's own click handler and the
+  funnel records the conversion natively.
+============================================================ -->
+<script>
+  (function () {
+    function fireGhlPopup() {
+      var wrappers = document.querySelectorAll('.gh-popup-trigger');
+      for (var i = 0; i < wrappers.length; i++) {
+        var w = wrappers[i];
+        var clickable = w.matches('a, button') ? w : w.querySelector('a, button');
+        if (clickable) { clickable.click(); return true; }
+      }
+      return false;
+    }
 
-  Selector to use in the GHL popup trigger settings:  [data-open-form]
-================================================================= -->
+    document.addEventListener('click', function (e) {
+      var trigger = e.target.closest('[data-open-form]');
+      if (!trigger) return;
+      e.preventDefault();
+      fireGhlPopup();
+    });
+  })();
+</script>
 
 </body>
 </html>
