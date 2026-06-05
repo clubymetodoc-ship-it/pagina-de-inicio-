@@ -1,0 +1,2532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Club C — Convertí tu profesión en un negocio rentable</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+
+
+<style>
+/* ===========  TOKENS  =========== */
+:root {
+  --primary: #3a4f8f;
+  --primary-dark: #2a3a6b;
+  --primary-deep: #1a2547;
+  --secondary: #7db5e8;
+  --secondary-soft: #c1dbf2;
+  --tertiary: #f4b8a3;
+  --tertiary-soft: #f9d7c8;
+  --tertiary-deep: #d68f76;
+  --accessory: #f7f6f3;
+  --ink: #14192b;
+  --ink-soft: #4a5170;
+  --line: rgba(20, 25, 43, 0.10);
+  --line-on-dark: rgba(247, 246, 243, 0.16);
+
+  --f-title: 'Poppins', system-ui, sans-serif;
+  --f-body: 'Lato', system-ui, sans-serif;
+  --f-accent: 'Caveat', cursive;
+
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 32px;
+  --r-pill: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(20, 25, 43, 0.05), 0 2px 8px rgba(20, 25, 43, 0.04);
+  --shadow-md: 0 4px 12px rgba(20, 25, 43, 0.08), 0 12px 32px rgba(20, 25, 43, 0.06);
+  --shadow-lg: 0 12px 28px rgba(20, 25, 43, 0.12), 0 24px 60px rgba(20, 25, 43, 0.10);
+
+  --headline-scale: 1;
+  --btn-radius: 999px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--f-body);
+  color: var(--ink);
+  background: var(--accessory);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.55;
+  font-size: 17px;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ===========  CONTAINERS  =========== */
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+@media (max-width: 720px) { .container { padding: 0 20px; } }
+
+section { position: relative; }
+
+/* ===========  TYPOGRAPHY  =========== */
+.h1, .h2, .h3, .h4 {
+  font-family: var(--f-title);
+  color: var(--ink);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.h2 {
+  font-size: clamp(40px, calc(6.4vw * var(--headline-scale)), 96px);
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.035em;
+}
+.h2 em {
+  font-style: italic;
+  font-weight: 300;
+}
+.h3 {
+  font-size: clamp(22px, 2.2vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+}
+.h4 {
+  font-family: var(--f-title);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.on-dark, .h2.on-dark { color: var(--accessory); }
+.accent-coral { color: var(--tertiary) !important; font-style: italic; font-weight: 300; }
+.accent-sky { color: var(--secondary) !important; font-style: italic; font-weight: 300; }
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--f-title);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--primary);
+}
+.eyebrow.on-dark { color: var(--secondary); }
+.eyebrow em { font-family: var(--f-accent); font-style: italic; font-weight: 600; letter-spacing: 0; font-size: 18px; color: var(--tertiary); text-transform: lowercase; padding: 0 4px; }
+
+.lead {
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+.lead.on-dark { color: rgba(247, 246, 243, 0.78); }
+.script {
+  font-family: var(--f-accent);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* ===========  BUTTONS  =========== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 18px 32px;
+  font-family: var(--f-title);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--btn-radius);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+  border: 2px solid transparent;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+.btn-primary { background: var(--ink); color: var(--accessory); box-shadow: var(--shadow-md); }
+.btn-primary:hover { background: var(--primary-deep); }
+.btn-accent {
+  background: var(--tertiary);
+  color: var(--primary-deep);
+  box-shadow: 0 8px 24px rgba(244, 184, 163, 0.25);
+}
+.btn-accent:hover { background: var(--tertiary-soft); box-shadow: 0 14px 32px rgba(244, 184, 163, 0.35); }
+.btn-outline {
+  background: transparent;
+  color: var(--accessory);
+  border-color: var(--accessory);
+}
+.btn-outline:hover { background: var(--accessory); color: var(--ink); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--accessory); }
+.btn .arrow { transition: transform 0.18s ease; }
+.btn:hover .arrow { transform: translateX(4px); }
+
+/* ===========  NAV  =========== */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 40px;
+  background: rgba(20, 25, 43, 0.86);
+  backdrop-filter: saturate(140%) blur(14px);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  border-bottom: 1px solid var(--line-on-dark);
+  color: var(--accessory);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.nav-logo img { height: 44px; width: auto; }
+.nav-logo em {
+  font-family: var(--f-accent);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  font-size: 20px;
+  color: var(--secondary);
+  margin-left: 2px;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  font-family: var(--f-title);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.nav-links a { opacity: 0.78; transition: opacity 0.15s; }
+.nav-links a:hover { opacity: 1; }
+.nav-cta {
+  padding: 12px 22px;
+  background: var(--secondary);
+  color: var(--primary-deep) !important;
+  border-radius: var(--r-pill);
+  font-weight: 700;
+  font-size: 12px;
+  opacity: 1 !important;
+  transition: transform 0.18s, background 0.18s;
+}
+.nav-cta:hover { transform: translateY(-1px); background: var(--secondary-soft); }
+@media (max-width: 980px) {
+  .nav-links a:not(.nav-cta) { display: none; }
+  .nav { padding: 12px 20px; }
+  .nav-logo span { display: none; }
+}
+
+/* ===========  HERO  =========== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  background: var(--primary-deep);
+  color: var(--accessory);
+  padding: 120px 0 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 70% at 90% 0%, rgba(125, 181, 232, 0.20), transparent 60%),
+    radial-gradient(50% 60% at 0% 100%, rgba(244, 184, 163, 0.14), transparent 70%),
+    linear-gradient(180deg, #1a2547 0%, #14192b 100%);
+  z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(247, 246, 243, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(247, 246, 243, 0.035) 1px, transparent 1px);
+  background-size: 88px 88px;
+  z-index: 0;
+  mask-image: linear-gradient(180deg, transparent 0%, black 25%, black 75%, transparent 100%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: center;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 60px 40px 40px;
+  flex: 1;
+}
+@media (max-width: 1080px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 60px 32px; }
+}
+@media (max-width: 720px) { .hero-grid { padding: 40px 20px; } }
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 18px 9px 14px;
+  background: rgba(247, 246, 243, 0.06);
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accessory);
+  margin-bottom: 32px;
+}
+.hero-eyebrow em {
+  font-family: var(--f-accent);
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0;
+  font-size: 17px;
+  color: var(--secondary);
+  text-transform: none;
+  padding: 0 2px;
+}
+.hero-eyebrow .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--tertiary);
+  box-shadow: 0 0 0 4px rgba(244, 184, 163, 0.18);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(244, 184, 163, 0.18); }
+  50% { box-shadow: 0 0 0 8px rgba(244, 184, 163, 0.10); }
+}
+
+.hero-title {
+  font-family: var(--f-title);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--accessory);
+  letter-spacing: -0.045em;
+  line-height: 0.88;
+  font-size: clamp(56px, calc(8.4vw * var(--headline-scale)), 152px);
+}
+.hero-title .line { display: block; }
+.hero-title em {
+  font-style: italic;
+  font-weight: 300;
+}
+.hero-script {
+  display: block;
+  font-family: var(--f-accent);
+  font-weight: 600;
+  font-style: italic;
+  font-size: clamp(27px, 2.8vw, 41px);
+  letter-spacing: -0.005em;
+  text-transform: none;
+  color: var(--secondary);
+  margin-top: 18px;
+  line-height: 1.15;
+}
+
+.hero-meta {
+  margin-top: 44px;
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.meta-num {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: clamp(36px, 4.2vw, 56px);
+  line-height: 0.9;
+  color: var(--tertiary);
+  letter-spacing: -0.04em;
+}
+.meta-num small {
+  font-size: 0.42em;
+  margin-left: 4px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: rgba(247, 246, 243, 0.55);
+  text-transform: lowercase;
+}
+.meta-label {
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 243, 0.65);
+  line-height: 1.3;
+}
+.meta-divider {
+  width: 1px;
+  background: var(--line-on-dark);
+  align-self: stretch;
+}
+
+.hero-cta-row {
+  margin-top: 44px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+}
+
+.hero-photo {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--primary-dark);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line-on-dark);
+  height: 600px;
+  width: auto;
+  margin-left: auto;
+}
+.hero-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: contrast(1.02) saturate(1.05);
+}
+.hero-photo-badge {
+  position: absolute;
+  bottom: 22px; right: 22px;
+  background: rgba(20, 25, 43, 0.78);
+  backdrop-filter: blur(10px);
+  border-radius: var(--r-md);
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-end;
+  color: var(--accessory);
+}
+.hero-photo-badge .script {
+  color: var(--secondary);
+  font-size: 22px;
+  line-height: 0.9;
+}
+.hero-photo-badge strong {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.hero-photo-tag {
+  position: absolute;
+  bottom: 22px; left: 22px;
+  background: var(--accessory);
+  color: var(--primary-deep);
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hero-bottom {
+  position: relative;
+  z-index: 2;
+  border-top: 1px solid var(--line-on-dark);
+  background: rgba(20, 25, 43, 0.4);
+}
+.hero-bottom-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  font-family: var(--f-title);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(247, 246, 243, 0.72);
+}
+.hero-bottom-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.hero-bottom-item svg { color: var(--secondary); }
+@media (max-width: 720px) {
+  .hero-bottom-inner { padding: 16px 20px; }
+}
+
+/* ===========  MARQUEE  =========== */
+.marquee {
+  background: var(--ink);
+  color: var(--accessory);
+  padding: 26px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(247, 246, 243, 0.06);
+  border-bottom: 1px solid rgba(247, 246, 243, 0.06);
+}
+.marquee-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee 42s linear infinite;
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: clamp(22px, 3vw, 36px);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.marquee-track span {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 0;
+}
+.marquee-track .leaf {
+  display: inline-block;
+  margin: 0 36px;
+  color: var(--tertiary);
+  font-style: normal;
+  font-size: 0.6em;
+  vertical-align: middle;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ===========  MANIFIESTO  =========== */
+.manifiesto {
+  padding: 140px 0;
+  background: var(--accessory);
+}
+.manifiesto-title {
+  font-size: clamp(44px, calc(7.2vw * var(--headline-scale)), 112px) !important;
+  margin: 18px 0 64px;
+  max-width: 18ch;
+  color: var(--primary);
+}
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 72px;
+}
+@media (max-width: 980px) { .pain-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .pain-grid { grid-template-columns: 1fr; } }
+
+.pain-card {
+  background: white;
+  border-radius: var(--r-lg);
+  padding: 32px 24px 28px;
+  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  min-height: 220px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+  position: relative;
+}
+.pain-card:nth-child(1) { background: var(--primary); color: var(--accessory); border-color: transparent; }
+.pain-card:nth-child(2) { background: var(--secondary); color: var(--primary-deep); border-color: transparent; }
+.pain-card:nth-child(3) { background: var(--tertiary); color: var(--primary-deep); border-color: transparent; }
+.pain-card:nth-child(4) { background: var(--ink); color: var(--accessory); border-color: transparent; }
+.pain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.pain-num {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 56px;
+  letter-spacing: -0.04em;
+  line-height: 0.85;
+  opacity: 0.85;
+}
+.pain-card h4 {
+  font-family: var(--f-title);
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-top: auto;
+}
+
+.manifiesto-conclusion {
+  font-family: var(--f-body);
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.45;
+  color: var(--ink);
+  max-width: 36ch;
+  text-wrap: balance;
+  font-weight: 400;
+}
+.manifiesto-conclusion .script {
+  color: var(--primary);
+  font-size: 1.3em;
+  display: block;
+  margin-bottom: 4px;
+}
+.manifiesto-conclusion strong { font-weight: 700; color: var(--primary); }
+
+/* ===========  AUDIENCE  =========== */
+.audience {
+  padding: 140px 0;
+  background: white;
+  border-top: 1px solid var(--line);
+}
+.audience .section-head h2 { color: var(--primary); }
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 64px;
+}
+@media (max-width: 980px) { .section-head { grid-template-columns: 1fr; gap: 24px; align-items: start; } }
+.section-head .eyebrow { margin-bottom: 18px; display: block; }
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 980px) { .audience-grid { grid-template-columns: 1fr; } }
+
+.audience-card {
+  background: var(--accessory);
+  border-radius: var(--r-lg);
+  padding: 36px 32px 32px;
+  border: 1px solid var(--line);
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.audience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.audience-card .num {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 120px;
+  line-height: 0.85;
+  color: var(--primary);
+  opacity: 0.08;
+  position: absolute;
+  top: 12px; right: 18px;
+  letter-spacing: -0.05em;
+}
+.audience-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accessory);
+  margin-bottom: 8px;
+}
+.audience-icon svg { width: 30px; height: 30px; }
+.audience-card:nth-child(2) .audience-icon { background: var(--secondary); color: var(--primary-deep); }
+.audience-card:nth-child(3) .audience-icon { background: var(--tertiary); color: var(--primary-deep); }
+.audience-card h3 {
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 26px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+.audience-card .role {
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.audience-card p {
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+
+/* ===========  MÉTODO C  =========== */
+.metodo {
+  padding: 140px 0;
+  background: var(--ink);
+  color: var(--accessory);
+  position: relative;
+  overflow: hidden;
+}
+.metodo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(50% 60% at 100% 0%, rgba(125, 181, 232, 0.12), transparent 60%),
+    radial-gradient(40% 50% at 0% 100%, rgba(244, 184, 163, 0.08), transparent 70%);
+  z-index: 0;
+}
+.metodo > .container { position: relative; z-index: 1; }
+.metodo-head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 36px;
+  align-items: end;
+  margin-bottom: 72px;
+}
+@media (max-width: 880px) { .metodo-head { grid-template-columns: 1fr; gap: 20px; align-items: start; } }
+.metodo-head .eyebrow { display: block; margin-bottom: 5px; }
+.metodo-logo {
+  height: 130px;
+  width: auto;
+  filter: drop-shadow(0 8px 24px rgba(125,181,232,0.3));
+}
+.metodo-fases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 980px) { .metodo-fases { grid-template-columns: 1fr; } }
+.fase {
+  background: rgba(247, 246, 243, 0.04);
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-lg);
+  padding: 36px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: background 0.22s, transform 0.22s, border-color 0.22s;
+  position: relative;
+}
+.fase:hover {
+  transform: translateY(-4px);
+  background: rgba(247, 246, 243, 0.07);
+}
+.fase-1:hover { border-color: var(--secondary); }
+.fase-2:hover { border-color: var(--tertiary); }
+.fase-3:hover { border-color: var(--accessory); }
+
+.fase-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.fase-num {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.85;
+  letter-spacing: -0.05em;
+  color: var(--secondary);
+}
+.fase-2 .fase-num { color: var(--tertiary); }
+.fase-3 .fase-num { color: var(--accessory); }
+.fase-tag {
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 243, 0.6);
+  padding: 7px 14px;
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-pill);
+}
+.fase h3 {
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: clamp(26px, 2.6vw, 32px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--accessory);
+}
+.fase p {
+  color: rgba(247, 246, 243, 0.72);
+  font-size: 15.5px;
+  line-height: 1.55;
+}
+.fase-modules {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.fase-modules li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 4px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line-on-dark);
+  font-size: 14.5px;
+  color: rgba(247, 246, 243, 0.85);
+}
+.fase-modules li strong {
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 12px;
+  color: var(--secondary);
+  letter-spacing: 0.04em;
+  align-self: center;
+}
+.fase-2 .fase-modules li strong { color: var(--tertiary); }
+.fase-3 .fase-modules li strong { color: var(--accessory); }
+
+/* ===========  PROGRAMA / INCLUDES  =========== */
+.programa {
+  padding: 140px 0;
+  background: var(--accessory);
+}
+.programa .section-head h2 { color: var(--primary); }
+.includes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 880px) { .includes-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .includes-grid { grid-template-columns: 1fr; } }
+
+.include-card {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.include-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.include-icon {
+  width: 52px; height: 52px;
+  border-radius: var(--r-md);
+  background: var(--secondary-soft);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.include-icon svg { width: 26px; height: 26px; }
+.include-card h4 {
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.include-card p {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.include-card-feature {
+  background: var(--primary);
+  color: var(--accessory);
+  border-color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.include-card-feature::after {
+  content: '★';
+  position: absolute;
+  bottom: -30px; right: -10px;
+  font-size: 120px;
+  color: rgba(247, 246, 243, 0.06);
+  line-height: 1;
+}
+.include-card-feature .include-icon { background: var(--tertiary); color: var(--primary-deep); }
+.include-card-feature p { color: rgba(247, 246, 243, 0.78); }
+
+/* ===========  LOGRAR  =========== */
+.lograr {
+  padding: 140px 0;
+  background: white;
+}
+.lograr-content h2 { color: var(--primary); }
+.lograr-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 980px) { .lograr-wrap { grid-template-columns: 1fr; gap: 48px; } }
+
+.lograr-photo {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-lg);
+}
+.lograr-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.lograr-photo-badge {
+  position: absolute;
+  bottom: 22px; left: 22px;
+  background: var(--tertiary);
+  color: var(--primary-deep);
+  padding: 10px 18px;
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.lograr-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 36px;
+}
+.lograr-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+.lograr-list li:last-child { border-bottom: none; }
+.lograr-list li strong { color: var(--ink); font-weight: 700; }
+.lograr-list li .check {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--accessory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.lograr-list li .check svg { width: 18px; height: 18px; }
+
+/* ===========  TESTIMONIOS  =========== */
+.testimonials {
+  padding: 140px 0;
+  background: var(--accessory);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+@media (max-width: 980px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+.testimonial {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 36px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+.testimonial:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+.testimonial-feature {
+  background: var(--primary);
+  color: var(--accessory);
+  border-color: transparent;
+}
+.testimonial-feature .quote-mark { color: var(--tertiary); }
+.testimonial-feature .person-name { color: var(--accessory); }
+.testimonial-feature .person-role { color: rgba(247, 246, 243, 0.7); }
+.testimonial-feature .person { border-top-color: rgba(247, 246, 243, 0.16); }
+
+.quote-mark {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 0.5;
+  color: var(--primary);
+  font-style: normal;
+  height: 24px;
+}
+.quote {
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.55;
+  flex-grow: 1;
+}
+.testimonial-feature .quote { color: var(--accessory); }
+.person {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+.person-avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--secondary-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 14px;
+  color: var(--primary-deep);
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+}
+.person-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.testimonial-feature .person-avatar { background: var(--tertiary); }
+.person-name {
+  font-family: var(--f-title);
+  font-weight: 700;
+  font-size: 15px;
+}
+.person-role {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 1px;
+}
+
+/* ===========  ASCENSO  =========== */
+.ascenso {
+  padding: 140px 0;
+  background: var(--primary-deep);
+  color: var(--accessory);
+  position: relative;
+  overflow: hidden;
+}
+.ascenso::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(55% 70% at 0% 100%, rgba(244, 184, 163, 0.18), transparent 60%),
+    radial-gradient(40% 50% at 100% 0%, rgba(125, 181, 232, 0.15), transparent 70%);
+}
+.ascenso > .container { position: relative; z-index: 1; }
+.ascenso-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 72px;
+  align-items: center;
+}
+@media (max-width: 980px) { .ascenso-wrap { grid-template-columns: 1fr; gap: 48px; } }
+
+.ascenso-photo {
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: 4/5;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--line-on-dark);
+}
+.ascenso-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.ascenso-logo {
+  height: 80px;
+  width: auto;
+  margin-bottom: 18px;
+  filter: drop-shadow(0 8px 24px rgba(125,181,232,0.4));
+}
+.ascenso-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 28px 0 36px;
+}
+.tag-pill {
+  display: inline-block;
+  padding: 8px 16px;
+  background: rgba(247, 246, 243, 0.06);
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 243, 0.85);
+}
+
+/* ===========  CATE  =========== */
+.cate {
+  padding: 140px 0;
+  background: var(--accessory);
+}
+.cate-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 980px) { .cate-wrap { grid-template-columns: 1fr; gap: 56px; } }
+
+.cate-photo-wrap {
+  position: relative;
+}
+.cate-photo {
+  aspect-ratio: 3/4.4;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.cate-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.cate-stats {
+  position: absolute;
+  bottom: -28px; right: -28px;
+  background: var(--ink);
+  color: var(--accessory);
+  border-radius: var(--r-lg);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-lg);
+  min-width: 220px;
+}
+.cate-stats .stat {
+  font-family: var(--f-title);
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--tertiary);
+}
+.cate-stats .label {
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(247, 246, 243, 0.7);
+  margin-top: 4px;
+}
+.cate-signature {
+  position: absolute;
+  top: -20px; left: -16px;
+  font-family: var(--f-accent);
+  font-style: italic;
+  font-weight: 600;
+  color: var(--secondary);
+  font-size: 64px;
+  line-height: 1;
+  transform: rotate(-6deg);
+}
+
+.cate-quote {
+  font-family: var(--f-accent);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--primary);
+  font-size: clamp(26px, 2.6vw, 36px);
+  line-height: 1.15;
+  margin: 24px 0 32px;
+  max-width: 24ch;
+}
+.cate-quote em { font-family: var(--f-title); font-weight: 800; font-style: italic; color: var(--tertiary-deep); }
+.cate-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 56ch;
+}
+.cate-credentials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+.cate-credentials .chip {
+  padding: 8px 14px;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+/* ===========  FAQ  =========== */
+.faq {
+  padding: 140px 0;
+  background: white;
+}
+.faq-wrap h2 { color: var(--primary); font-size: clamp(34px, calc(4.6vw * var(--headline-scale)), 64px) !important; }
+.faq-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 80px;
+  align-items: start;
+}
+@media (max-width: 880px) { .faq-wrap { grid-template-columns: 1fr; gap: 32px; } }
+.faq-list {
+  display: flex;
+  flex-direction: column;
+}
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item:first-child { border-top: 1px solid var(--line); }
+.faq-q {
+  width: 100%;
+  text-align: left;
+  padding: 26px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--f-title);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: color 0.15s;
+  letter-spacing: -0.01em;
+}
+.faq-q:hover { color: var(--secondary); }
+.faq-q .plus {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.22s, background 0.18s, color 0.18s, border-color 0.18s;
+  font-size: 18px;
+  font-weight: 400;
+}
+.faq-item.open .faq-q .plus {
+  transform: rotate(45deg);
+  background: var(--primary);
+  color: var(--accessory);
+  border-color: var(--primary);
+}
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-a-inner {
+  padding: 0 50px 26px 0;
+  color: var(--ink-soft);
+  font-size: 16px;
+  line-height: 1.65;
+  max-width: 60ch;
+}
+.faq-item.open .faq-a { max-height: 280px; }
+
+/* ===========  CTA FINAL  =========== */
+.cta-final {
+  padding: 140px 0;
+  background: var(--ink);
+  color: var(--accessory);
+  position: relative;
+  overflow: hidden;
+}
+.cta-final-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(50% 60% at 80% 30%, rgba(244, 184, 163, 0.20), transparent 60%),
+    radial-gradient(40% 50% at 20% 80%, rgba(125, 181, 232, 0.18), transparent 70%);
+  z-index: 0;
+}
+.cta-final > .container { position: relative; z-index: 1; }
+
+.cta-final-inner {
+  text-align: center;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.cta-final-action {
+  margin-top: 36px;
+  display: flex;
+  justify-content: center;
+}
+.cta-final-title {
+  font-family: var(--f-title);
+  font-weight: 900;
+  text-transform: uppercase;
+  color: var(--accessory);
+  line-height: 0.85;
+  letter-spacing: -0.045em;
+  margin-top: 24px;
+  font-size: clamp(48px, calc(7.2vw * var(--headline-scale)), 112px);
+}
+.cta-final-title .huge {
+  display: block;
+  font-size: 1.2em;
+  margin: 4px 0;
+  color: var(--tertiary);
+  font-style: italic;
+  font-weight: 300;
+}
+.cta-final-title .hero-script {
+  font-size: clamp(24px, 2.6vw, 36px);
+  margin-top: 16px;
+}
+
+.apply-form {
+  margin: 48px auto 0;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: rgba(247, 246, 243, 0.04);
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-xl);
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+.apply-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (max-width: 560px) { .apply-row { grid-template-columns: 1fr; } }
+
+.apply-form input,
+.apply-form select {
+  width: 100%;
+  padding: 16px 18px;
+  background: rgba(20, 25, 43, 0.4);
+  border: 1.5px solid var(--line-on-dark);
+  border-radius: var(--r-md);
+  color: var(--accessory);
+  font: inherit;
+  font-size: 15px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.apply-form input::placeholder { color: rgba(247, 246, 243, 0.55); }
+.apply-form input:focus,
+.apply-form select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  background: rgba(20, 25, 43, 0.6);
+}
+.apply-form select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f7f6f3' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; background-size: 18px; padding-right: 44px; }
+
+/* Phone with country-code selector */
+.phone-group { display: flex; gap: 10px; }
+.phone-group .phone-cc {
+  flex: 0 0 116px;
+  width: 116px;
+  padding-right: 36px;
+  background-position: right 12px center;
+  font-variant-emoji: text;
+}
+.phone-group .phone-num { flex: 1 1 auto; }
+
+.apply-submit {
+  margin-top: 8px;
+  padding: 20px 32px;
+  background: var(--tertiary);
+  color: var(--primary-deep);
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--r-pill);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: transform 0.18s, background 0.18s, box-shadow 0.18s;
+  box-shadow: 0 8px 24px rgba(244, 184, 163, 0.25);
+}
+.apply-submit:hover {
+  transform: translateY(-2px);
+  background: var(--tertiary-soft);
+  box-shadow: 0 14px 32px rgba(244, 184, 163, 0.35);
+}
+.apply-note {
+  text-align: center;
+  color: rgba(247, 246, 243, 0.55);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.apply-success {
+  display: none;
+  margin: 48px auto 0;
+  max-width: 560px;
+  background: rgba(247, 246, 243, 0.06);
+  border: 1px solid var(--line-on-dark);
+  border-radius: var(--r-xl);
+  padding: 40px 32px;
+  text-align: center;
+  color: var(--accessory);
+}
+.apply-success svg { color: var(--tertiary); margin: 0 auto 16px; }
+.apply-success h3 {
+  font-family: var(--f-title);
+  font-weight: 800;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+.apply-success p { color: rgba(247, 246, 243, 0.75); }
+
+/* ===========  FOOTER  =========== */
+.footer {
+  background: var(--ink);
+  color: var(--accessory);
+  padding: 72px 0 32px;
+  font-size: 14px;
+  border-top: 1px solid var(--line-on-dark);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 1fr));
+  gap: 56px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line-on-dark);
+}
+@media (max-width: 880px) { .footer-top { grid-template-columns: 1fr 1fr; gap: 36px 24px; } }
+.footer-brand { display: flex; flex-direction: column; gap: 18px; }
+.footer-brand img { height: 96px; width: auto; max-width: none; object-fit: contain; }
+.footer-brand p { color: rgba(247, 246, 243, 0.65); font-size: 14px; line-height: 1.55; max-width: 36ch; }
+.footer h5 {
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 18px;
+}
+.footer ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer ul a { color: rgba(247, 246, 243, 0.75); transition: color 0.15s; }
+.footer ul a:hover { color: var(--accessory); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 32px;
+  color: rgba(247, 246, 243, 0.5);
+  font-size: 13px;
+}
+.footer-values {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--f-title);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--tertiary);
+}
+.footer-values .dot { color: rgba(247, 246, 243, 0.3); }
+
+/* ===========  TWEAKS PANEL  =========== */
+.tweaks-panel {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-lg);
+  width: 320px;
+  max-height: 80vh;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: var(--f-body);
+  color: var(--ink);
+}
+.tweaks-panel.open { display: flex; }
+.tweaks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  background: var(--accessory);
+}
+.tweaks-header h3 {
+  font-family: var(--f-title);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.tweaks-close {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--accessory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+.tweaks-body {
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.tweak-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+}
+.tweak-section:last-child { border-bottom: none; padding-bottom: 0; }
+.tweak-section-title {
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.tweak-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tweak-label {
+  font-family: var(--f-title);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.tweak-row .color-swatches {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.color-swatch {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 0 0 0 1px var(--line);
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.color-swatch:hover { transform: scale(1.08); }
+.color-swatch.active { box-shadow: 0 0 0 2px var(--ink); }
+.tweak-row input[type="text"] {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: 13px;
+  width: 100%;
+}
+.tweak-row input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+.tweak-row input[type="range"] {
+  width: 100%;
+}
+.tweak-row select {
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  font: inherit;
+  font-size: 13px;
+  background: white;
+}
+.tweak-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.tweak-switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  background: var(--line);
+  border-radius: 11px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.tweak-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.tweak-switch.on { background: var(--primary); }
+.tweak-switch.on::after { transform: translateX(18px); }
+.tweak-radios {
+  display: flex;
+  gap: 6px;
+  background: var(--accessory);
+  padding: 3px;
+  border-radius: var(--r-sm);
+}
+.tweak-radios button {
+  flex: 1;
+  padding: 7px 10px;
+  font-family: var(--f-title);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  color: var(--ink-soft);
+  transition: background 0.15s, color 0.15s;
+  cursor: pointer;
+}
+.tweak-radios button.active {
+  background: var(--ink);
+  color: var(--accessory);
+}
+
+/* hide marquee when off */
+.marquee.hidden, .lograr.hidden { display: none; }
+
+/* ===========  TESTIMONIAL VIDEO BUTTON  =========== */
+.testimonial-video-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 18px;
+  padding: 9px 16px;
+  background: transparent;
+  color: var(--primary);
+  border: 1px solid rgba(58, 79, 143, 0.25);
+  border-radius: var(--r-pill);
+  font-family: var(--f-title);
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.testimonial-video-btn:hover {
+  background: var(--primary);
+  color: var(--accessory);
+  border-color: var(--primary);
+  transform: translateY(-1px);
+}
+.testimonial-video-btn svg { flex-shrink: 0; }
+
+.testimonial-feature .testimonial-video-btn {
+  color: var(--accessory);
+  border-color: rgba(247, 246, 243, 0.35);
+}
+.testimonial-feature .testimonial-video-btn:hover {
+  background: var(--accessory);
+  color: var(--primary-deep);
+  border-color: var(--accessory);
+}
+
+/* ===========  VIDEO MODAL  =========== */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: rgba(10, 14, 28, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: video-modal-fade 0.18s ease;
+}
+.video-modal[hidden] { display: none; }
+@keyframes video-modal-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.video-modal-frame {
+  width: 100%;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+.video-modal-player,
+.video-modal-player iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+.video-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(247, 246, 243, 0.12);
+  color: var(--accessory);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s ease;
+}
+.video-modal-close:hover { background: rgba(247, 246, 243, 0.22); }
+
+body.video-modal-open { overflow: hidden; }
+
+/* ===========  MOBILE OVERRIDES  =========== */
+/* Many inline styles in the markup came from the design tool with fixed
+   pixel widths/heights. These overrides relax them on small viewports so
+   the page reflows cleanly on phones. */
+@media (max-width: 880px) {
+  .hero-grid[style] {
+    height: auto !important;
+    line-height: normal !important;
+    padding-top: 100px;
+  }
+  .hero-title .line[style] { font-size: clamp(40px, 9vw, 64px) !important; }
+  .hero-script[style] {
+    height: auto !important;
+    font-size: clamp(22px, 5.4vw, 32px) !important;
+    line-height: 1.2;
+  }
+  .hero-photo { height: auto; width: 100%; max-height: 560px; margin-left: 0; }
+  #hero-img { height: 100%; width: 100%; }
+  .hero-photo-badge {
+    bottom: 18px;
+    right: 18px;
+    padding: 8px 12px;
+    background: rgba(20, 25, 43, 0.55);
+  }
+  .hero-meta { gap: 20px; margin-top: 32px; }
+  .meta-divider { display: none; }
+  .hero-cta-row { flex-direction: column; align-items: stretch; }
+  .hero-cta-row .btn { width: 100%; justify-content: center; }
+
+  /* Section headings with hard widths */
+  .section-head .h2[style],
+  .metodo-head .h2[style] { width: auto !important; max-width: 100%; }
+
+  /* Método logo */
+  .metodo-logo[style] {
+    height: auto !important;
+    width: 140px !important;
+    margin: 0 0 16px !important;
+  }
+
+  /* Ascenso tags overflow */
+  .ascenso-tags[style] { width: auto !important; max-width: 100%; flex-wrap: wrap; }
+
+  /* Footer brand logo */
+  .footer-brand img[style] { width: 140px !important; }
+
+  /* Testimonial video button tightens */
+  .testimonial-video-btn { font-size: 12px; padding: 8px 14px; margin: 12px 0 16px; }
+}
+
+@media (max-width: 560px) {
+  .hero-title .line[style] { font-size: clamp(34px, 10vw, 48px) !important; }
+  .hero-script[style] { font-size: clamp(20px, 5.5vw, 26px) !important; }
+  .hero-photo { max-height: 440px; }
+
+  .video-modal { padding: 12px; }
+  .video-modal-close { top: 12px; right: 12px; width: 38px; height: 38px; font-size: 22px; }
+  .video-modal-frame { border-radius: var(--r-md); }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" data-screen-label="nav">
+  <a href="#top" class="nav-logo">
+    <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/logo-club-c.png" alt="Club C" />
+    <span>Club <em>C</em></span>
+  </a>
+  <div class="nav-links">
+    <a href="#manifiesto">Por qué</a>
+    <a href="#metodo">El Método</a>
+    <a href="#programa">Programa</a>
+    <a href="#cate">Cate</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" class="nav-cta" data-tweak="ctaPrimary" data-open-form>Aplicar al Club</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top" data-screen-label="hero">
+
+  <div class="hero-grid" style="height: 500px; line-height: 0.5; letter-spacing: 0.5px; text-align: left">
+    <div class="hero-copy">
+      <div class="hero-eyebrow" style="text-align: left">
+        <span class="dot"></span>
+        Formación <em>Club C</em> · Consultar por cupos disponibles
+      </div>
+
+      <h1 class="hero-title">
+        <span class="line" data-tweak="headline" style="font-size: 75px">Convertí tu profesión<br/>en un negocio<br/><em class="accent-coral">rentable.</em></span>
+        <span class="hero-script" data-tweak="headlineScript" style="height: 35px; font-size: 40px">con estabilidad de ingresos<br/>y tiempo para vos.</span>
+      </h1>
+
+      <div class="hero-meta">
+        <div class="meta-item">
+          <span class="meta-num" data-tweak="duration">12<small>sem.</small></span>
+          <span class="meta-label">O menos para facturar<br/>+2K&nbsp;USD estables<br/>con tu negocio</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-num">1<small>año</small></span>
+          <span class="meta-label">de seguimiento<br/>y comunidad</span>
+        </div>
+        <div class="meta-divider"></div>
+        <div class="meta-item">
+          <span class="meta-num">+150</span>
+          <span class="meta-label">profesionales<br/>formados</span>
+        </div>
+      </div>
+
+      <div class="hero-cta-row">
+        <button class="btn btn-accent" data-open-form type="button">
+          <span data-tweak="ctaPrimary">Quiero ser parte del Club C</span>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <a href="#programa" class="btn btn-outline">Ver el programa</a>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <img id="hero-img" src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/team-beach.jpg" alt="Equipo Club C" />
+      <div class="hero-photo-badge">
+        <span class="script">desde</span>
+        <strong style="margin: 0">2025</strong>
+      </div>
+      <div class="hero-photo-tag">Comunidad Club C</div>
+    </div>
+  </div>
+
+  <div class="hero-bottom">
+    <div class="hero-bottom-inner">
+      <div class="hero-bottom-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        <span>100% online · grabaciones disponibles</span>
+      </div>
+      <div class="hero-bottom-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        <span>Mentoría en vivo · 2 encuentros / semana</span>
+      </div>
+      <div class="hero-bottom-item">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+        <span>En toda la Argentina</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true" id="marquee">
+  <div class="marquee-track">
+    <span>Compromiso<i class="leaf">✦</i>Confianza<i class="leaf">✦</i>Crecimiento<i class="leaf">✦</i>Compromiso<i class="leaf">✦</i>Confianza<i class="leaf">✦</i>Crecimiento<i class="leaf">✦</i></span>
+    <span>Compromiso<i class="leaf">✦</i>Confianza<i class="leaf">✦</i>Crecimiento<i class="leaf">✦</i>Compromiso<i class="leaf">✦</i>Confianza<i class="leaf">✦</i>Crecimiento<i class="leaf">✦</i></span>
+  </div>
+</div>
+
+<!-- ============ MANIFIESTO / DOLOR ============ -->
+<section class="manifiesto" id="manifiesto" data-screen-label="manifiesto" style="padding: 20px 0px">
+  <div class="container">
+    <span class="eyebrow">¿Te pasa que…</span>
+    <h2 class="h2 manifiesto-title">
+      Tu título te dio <span class="accent-sky">la vocación</span>.<br/>
+      Nadie te enseñó el <em class="accent-coral">negocio</em>.
+    </h2>
+
+    <div class="pain-grid">
+      <article class="pain-card">
+        <span class="pain-num">01</span>
+        <h4>Trabajás mucho<br/>pero no ganás lo suficiente.</h4>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">02</span>
+        <h4>Necesitás llenar<br/>tu agenda con clientes&nbsp;ideales.</h4>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">03</span>
+        <h4>Querés recuperar<br/>tiempo para vos.</h4>
+      </article>
+      <article class="pain-card">
+        <span class="pain-num">04</span>
+        <h4>Sos muy bueno/a en lo que hacés<br/>pero no se nota en tus ingresos.</h4>
+      </article>
+    </div>
+
+    <p class="manifiesto-conclusion">
+      <em class="script">Porque no alcanza con saber mucho de tu especialidad…</em>
+      si no aprendés a <strong>vender, ordenar y comunicar</strong> tu conocimiento,
+      terminás cambiando <strong>tiempo por dinero</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ PARA QUIÉN ============ -->
+<section class="audience" data-screen-label="para-quien" style="padding: 20px 0px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Para quién es</span>
+        <h2 class="h2">Hecho para <span class="accent-sky">profesionales</span><br/>que quieren <em>más</em>.</h2>
+      </div>
+      <p class="lead">
+        Profesionales de la salud o el fitness que quieren <strong>volver a disfrutar de su vocación</strong>
+        con un negocio sano y estable que les permita recuperar su tiempo.
+      </p>
+    </div>
+
+    <div class="audience-grid">
+      <article class="audience-card">
+        <span class="num">01</span>
+        <div class="audience-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="11.98" y="1.59" width="1.40" height="0.42" rx="0.08"/><rect x="12.11" y="2.23" width="1.45" height="0.42" rx="0.08"/><rect x="12.21" y="2.87" width="1.50" height="0.42" rx="0.08"/><rect x="12.27" y="3.50" width="1.55" height="0.42" rx="0.08"/><rect x="12.28" y="4.14" width="1.60" height="0.42" rx="0.08"/><rect x="12.24" y="4.78" width="1.65" height="0.42" rx="0.08"/><rect x="12.16" y="5.42" width="1.70" height="0.42" rx="0.08"/><rect x="12.02" y="6.05" width="1.75" height="0.42" rx="0.08"/><rect x="11.74" y="6.69" width="2.00" height="0.42" rx="0.08"/><rect x="11.55" y="7.33" width="2.00" height="0.42" rx="0.08"/><rect x="11.32" y="7.97" width="2.00" height="0.42" rx="0.08"/><rect x="11.08" y="8.60" width="2.00" height="0.42" rx="0.08"/><rect x="10.82" y="9.24" width="2.00" height="0.42" rx="0.08"/><rect x="10.56" y="9.88" width="2.00" height="0.42" rx="0.08"/><rect x="10.31" y="10.51" width="2.00" height="0.42" rx="0.08"/><rect x="10.08" y="11.15" width="2.00" height="0.42" rx="0.08"/><rect x="9.88" y="11.79" width="2.00" height="0.42" rx="0.08"/><rect x="9.72" y="12.43" width="2.00" height="0.42" rx="0.08"/><rect x="9.60" y="13.06" width="2.00" height="0.42" rx="0.08"/><rect x="9.52" y="13.70" width="2.00" height="0.42" rx="0.08"/><rect x="9.36" y="14.34" width="2.30" height="0.42" rx="0.08"/><rect x="9.39" y="14.98" width="2.30" height="0.42" rx="0.08"/><rect x="9.48" y="15.61" width="2.30" height="0.42" rx="0.08"/><rect x="9.61" y="16.25" width="2.30" height="0.42" rx="0.08"/><rect x="9.79" y="16.89" width="2.30" height="0.42" rx="0.08"/><rect x="10.16" y="17.53" width="2.00" height="0.42" rx="0.08"/><rect x="10.44" y="18.16" width="1.90" height="0.42" rx="0.08"/><rect x="10.75" y="18.80" width="1.81" height="0.42" rx="0.08"/><rect x="11.06" y="19.44" width="1.72" height="0.42" rx="0.08"/><rect x="11.37" y="20.08" width="1.62" height="0.42" rx="0.08"/><rect x="11.67" y="20.71" width="1.53" height="0.42" rx="0.08"/><rect x="11.95" y="21.35" width="1.43" height="0.42" rx="0.08"/><rect x="12.19" y="21.99" width="1.34" height="0.42" rx="0.08"/></svg>
+        </div>
+        <h3>Lic. en Kinesiología<br/>y Fisiatría</h3>
+        <p>Construí un consultorio digital con sistemas de captación, agenda llena y servicios escalables — sin depender de derivaciones.</p>
+      </article>
+
+      <article class="audience-card">
+        <span class="num">02</span>
+        <div class="audience-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V11"/><path d="M12 11Q4 11 3 4 Q10 5 12 11Z"/><path d="M12 11Q20 11 21 4 Q14 5 12 11Z"/><path d="M12 11Q9 5 12 1 Q15 5 12 11Z"/></svg>
+        </div>
+        <h3>Lic. en<br/>Nutrición</h3>
+        <p>Diseñá programas grupales, membresías y planes que escalen tus ingresos sin sacrificar la calidad clínica.</p>
+      </article>
+
+      <article class="audience-card">
+        <span class="num">03</span>
+        <div class="audience-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14l4-4 4 4 8-8"/><path d="M14 6h6v6"/></svg>
+        </div>
+        <h3>Profes de<br/>Educación Física</h3>
+        <p>Pasá de entrenar uno a uno a liderar un negocio con marca, sistema de ventas y comunidad — online o híbrido.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTODO C ============ -->
+<section class="metodo" id="metodo" data-screen-label="metodo-c" style="padding: 20px 0px">
+  <div class="container">
+
+    <div class="metodo-head">
+      <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/logo-mc.png" alt="Método C" class="metodo-logo" style="height: 350px; width: 200px; margin: 0px 0px 25px; object-fit: cover" />
+      <div>
+        <span class="eyebrow on-dark" style="margin: 0px 0px 1px">El núcleo del Club</span>
+        <h2 class="h2 on-dark" style="width: 700px; margin: 20px 0px 0px">
+          Método&nbsp;C:<br/>
+          <em class="accent-sky">3 fases</em> para<br/>
+          construir tu negocio.
+        </h2>
+      </div>
+    </div>
+
+    <div class="metodo-fases">
+      <article class="fase fase-1">
+        <div class="fase-head">
+          <span class="fase-num">01</span>
+          <span class="fase-tag">Compromiso</span>
+        </div>
+        <h3>Establecer<br/>las bases.</h3>
+        <p>Cambiamos la mentalidad clínica por mentalidad de empresario.
+        Definimos tu sistema híbrido y el análisis estratégico del programa.</p>
+        <ul class="fase-modules">
+          <li><strong>M1</strong> Mentalidad y fundamentos del mundo digital</li>
+          <li><strong>M2</strong> Sistema híbrido</li>
+          <li><strong>M3</strong> Análisis del programa</li>
+        </ul>
+      </article>
+
+      <article class="fase fase-2">
+        <div class="fase-head">
+          <span class="fase-num">02</span>
+          <span class="fase-tag">Confianza</span>
+        </div>
+        <h3>La doble C:<br/>crecer y captar.</h3>
+        <p>Avatar, oferta, contenido y un sistema de venta evergreen para
+        que tu negocio capte sin que vos estés todo el día atrás.</p>
+        <ul class="fase-modules">
+          <li><strong>M4</strong> Avatar y oferta</li>
+          <li><strong>M5</strong> Contenido e Instagram</li>
+          <li><strong>M6</strong> Mentalidad de empresario</li>
+          <li><strong>M7</strong> Venta evergreen</li>
+        </ul>
+      </article>
+
+      <article class="fase fase-3">
+        <div class="fase-head">
+          <span class="fase-num">03</span>
+          <span class="fase-tag">Crecimiento</span>
+        </div>
+        <h3>Desarrollar<br/>lo que tenemos.</h3>
+        <p>Escalamos. Programa online, métricas, finanzas, masterclass,
+        eventos y experiencias presenciales para consolidar tu marca.</p>
+        <ul class="fase-modules">
+          <li><strong>M8</strong> Programa online escalable</li>
+          <li><strong>M9</strong> Métricas y finanzas</li>
+          <li><strong>M10</strong> Masterclass y eventos</li>
+          <li><strong>M11</strong> Herramientas digitales</li>
+          <li><strong>M12</strong> Experiencias presenciales</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMA / QUE INCLUYE ============ -->
+<section class="programa" id="programa" data-screen-label="programa" style="padding: 20px 0px">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 class="h2">Un programa formativo<br/>con <em class="accent-sky">todo lo que necesitás</em>.</h2>
+      </div>
+      <p class="lead">
+        1 año de seguimiento. Acompañamiento real,
+        material grabado, comunidad y herramientas profesionales.
+      </p>
+    </div>
+
+    <div class="includes-grid">
+      <article class="include-card">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg></div>
+        <h4>2 clases grupales en vivo</h4>
+        <p>Por Zoom. Lunes y miércoles a las 20 hs (Argentina). Quedan grabadas.</p>
+      </article>
+      <article class="include-card">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+        <h4>Plataforma con grabaciones</h4>
+        <p>Todo el contenido teórico y las tareas paso a paso disponibles 24/7.</p>
+      </article>
+      <article class="include-card">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h4>Clase quincenal de recuperación</h4>
+        <p>Jueves 13 hs. Para ponerte al día y resolver dudas con tutoría.</p>
+      </article>
+      <article class="include-card">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
+        <h4>Feedback personalizado</h4>
+        <p>Correcciones uno a uno en plataforma sobre tu negocio en construcción.</p>
+      </article>
+      <article class="include-card">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h4>Beneficios de referidos</h4>
+        <p>Acceso preferencial a CRMs y apps de seguimiento profesional.</p>
+      </article>
+      <article class="include-card include-card-feature">
+        <div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7L12 3 4 7l8 4 8-4z"/><path d="M4 7v6l8 4 8-4V7"/><path d="M12 11v10"/></svg></div>
+        <h4>Seguimiento durante 1 año</h4>
+        <p>No te soltamos al terminar. Acompañamiento, acción e implementación durante todo el año.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUÉ VAS A LOGRAR ============ -->
+<section class="lograr" data-screen-label="lograr" style="padding: 20px 0px">
+  <div class="container">
+    <div class="lograr-wrap">
+      <div class="lograr-photo">
+        <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/community-class.jpg" alt="Comunidad Club C" />
+        <div class="lograr-photo-badge">Comunidad activa</div>
+      </div>
+      <div class="lograr-content">
+        <span class="eyebrow">¿Qué vas a lograr?</span>
+        <h2 class="h2">Resultados<br/><em class="accent-sky">concretos</em>.</h2>
+
+        <ul class="lograr-list">
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div>
+              <strong>Crear un negocio sólido y estable</strong> con un Infoproducto Mínimo y Viable.
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div>
+              <strong>Posicionarte en redes con una estrategia clara</strong>, sin convertirte en influencer.
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div>
+              <strong>Aprender a vender tu conocimiento</strong> de forma concisa y practicable.
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div>
+              <strong>Recuperar el control de tu agenda</strong> y aumentar tu facturación disfrutando lo que hacés.
+            </div>
+          </li>
+          <li>
+            <span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <div>
+              <strong>Desenvolverte en una red de profesionales</strong> para crear equipos y proyectos ambiciosos.
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section class="testimonials" data-screen-label="testimonios" style="padding: 50px 0px">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Resultados reales</span>
+        <h2 class="h2" style="width: 500px; color: #323f7e">Profesionales que<br/>cambiaron <em class="accent-coral">las reglas</em><span style="color: rgb(20, 25, 43)">.</span></h2>
+      </div>
+      <p class="lead">No son solo promesas. Te dejamos historias concretas de colegas que decidieron darle un salto a su carrera —
+      y lo lograron con el Método C.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <article class="testimonial">
+        <span class="quote-mark">"</span>
+        <p class="quote">A fin de año no lograba cubrir el alquiler del consultorio, y esto me venía ocurriendo hace 5 años. Llegué a pensar que me había equivocado de profesión. Trabajando con la Formación del Club C, logré una facturación récord en el mes de Enero (superando incluso a los meses buenos). Con esto pude planificar y tomarme unas vacaciones que hace tiempo no me permitía.</p>
+        <button type="button" class="testimonial-video-btn" data-panda-library="vz-00521248-76b" data-panda-video="05d82706-7ca9-452a-9b19-bd0e3d24d2f0" aria-label="Ver historia completa de Luis Giménez">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Ver historia completa</span>
+        </button>
+        <div class="person">
+          <div class="person-avatar"><img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/testimonial-luis.jpg" alt="Luis Giménez" /></div>
+          <div>
+            <div class="person-name">Luis "Lucho" Giménez</div>
+            <div class="person-role">Lic. en Nutrición · Tierra del Fuego</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial testimonial-feature">
+        <span class="quote-mark">"</span>
+        <p class="quote">No quería estar en Enero/Febrero con el consultorio en baja y tampoco llegar de acá a un par de años dependiendo exclusivamente del trabajo 1-1. Había hecho otras capacitaciones en Marketing pero acá encontré ese acompañamiento y guía que me faltaba, lo cual me permitió empezar a trabajar con pacientes nuevos y lograr cupos completos en talleres realizados en los meses de Enero y Febrero.</p>
+        <button type="button" class="testimonial-video-btn" data-panda-library="vz-00521248-76b" data-panda-video="a9aeb6be-1b84-4216-b8a1-84a1c203dc24" aria-label="Ver historia completa de Agustina Bouvet">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Ver historia completa</span>
+        </button>
+        <div class="person">
+          <div class="person-avatar"><img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/testimonial-agustina.jpg" alt="Agustina Bouvet" /></div>
+          <div>
+            <div class="person-name">Agustina Bouvet</div>
+            <div class="person-role">Kinesióloga · Entre Ríos</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="testimonial">
+        <span class="quote-mark">"</span>
+        <p class="quote">Como profe, nunca me había capacitado en nada de ventas o marketing. Trabajando con el Club C encontré esa estrategia que me estaba faltando para potenciar mi negocio. En 2 semanas pude facturar lo mismo que hacía trabajando con casi 70 clientes.</p>
+        <button type="button" class="testimonial-video-btn" data-panda-library="vz-00521248-76b" data-panda-video="7c6b80b2-bad2-48c0-bbc2-d20a2409022c" aria-label="Ver historia completa de Gino Ryll">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span>Ver historia completa</span>
+        </button>
+        <div class="person">
+          <div class="person-avatar"><img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/testimonial-gino.jpg" alt="Gino Ryll" /></div>
+          <div>
+            <div class="person-name">Gino Ryll</div>
+            <div class="person-role">Profe Ed. Física · Bs. As.</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MÉTODO ASCENSO ============ -->
+<section class="ascenso" data-screen-label="ascenso" style="padding: 50px 0px">
+  <div class="container">
+    <div class="ascenso-wrap">
+      <div class="ascenso-photo">
+        <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/team-park.jpg" alt="Equipo Club C en el parque" />
+      </div>
+      <div class="ascenso-content">
+        <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/logo-ma.png" alt="Método Ascenso" class="ascenso-logo" />
+        <span class="eyebrow on-dark">El siguiente paso</span>
+        <h2 class="h2 on-dark" style="margin: 6px 0 22px; font-size: 50px">Método Ascenso.<br/><em class="accent-coral">Para quienes ya</em><br/>facturan y quieren escalar.</h2>
+        <p class="lead on-dark" style="margin: 20px 0px 0px">
+          Cuando tu negocio ya rueda y necesitás dar el salto: sistemas, posicionamiento
+          y escala real para convertirlo en una marca profesional con equipo y libertad.
+        </p>
+        <div class="ascenso-tags" style="width: 460px">
+          <span class="tag-pill">Posicionamiento</span>
+          <span class="tag-pill">Escala</span>
+          <span class="tag-pill">Liderazgo de equipo</span>
+        </div>
+        <button class="btn btn-outline" data-open-form type="button">
+          Acceder al Club C
+          <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CATE ============ -->
+<section class="cate" id="cate" data-screen-label="cate" style="padding: 50px 0px">
+  <div class="container">
+    <div class="cate-wrap">
+      <div class="cate-photo-wrap">
+        <div class="cate-photo">
+          <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/cate-portrait.jpg" alt="Cate Barale" />
+        </div>
+        <div class="cate-stats">
+          <div class="stat">+150</div>
+          <div class="label">profesionales formados</div>
+        </div>
+        <div class="cate-signature">Cate.</div>
+      </div>
+      <div>
+        <span class="eyebrow">Detrás del Club</span>
+        <h2 class="h2" style="margin: 14px 0 8px; color: var(--primary);">Cate Barale</h2>
+        <p class="cate-quote">"Tu título te abrió la puerta. El Club te enseña a hacer de tu profesión un <em>negocio</em>."</p>
+        <div class="cate-bio">
+          <p>Mentora de profesionales de la salud y el fitness. Cate combina formación clínica con experiencia
+          real en marketing y ventas digitales aplicadas al sector — sin promesas mágicas, con sistemas
+          probados en más de 150 profesionales.</p>
+          <p>Cate creó el Club C para que vos no tengas que elegir entre ser una buena profesional
+          y vivir bien de tu profesión.</p>
+        </div>
+        <div class="cate-credentials">
+          <span class="chip">Profe y Lic. en Ed. Física y Kinesiología</span>
+          <span class="chip">+3 años en negocios digitales</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq" data-screen-label="faq" style="padding: 50px 0px">
+  <div class="container">
+    <div class="faq-wrap">
+      <div>
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 class="h2" style="margin-top: 16px;">Todo lo que<br/>te estás <em class="accent-sky">preguntando</em>.</h2>
+        <p class="lead" style="margin-top: 24px;">¿Quedó alguna duda? Escribinos por WhatsApp.
+        Nos gusta charlar antes de que tomes la decisión.</p>
+        <a href="#" class="btn btn-ghost" style="margin-top: 28px;">
+          Hablar con el equipo
+          <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+        </a>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿Cuánto dura la formación?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Lográ los resultados en menos de 12 semanas de formación intensiva + 1 año completo de seguimiento, acompañamiento y comunidad para que implementes a tu ritmo.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿Necesito tener clientes o pacientes para entrar?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">No. Tenemos profesionales recién recibidos y otros con más de 10 años de carrera. Lo importante es el compromiso con construir un negocio profesional.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿En qué se diferencia del Método Ascenso?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">El Método C es la base: construís tu negocio digital profesional desde cero. El Método Ascenso es la siguiente etapa, pensada para profesionales que ya facturan y quieren escalar con sistemas y equipo.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿Cuánto tiempo me demanda por semana?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Mínimo 2 horas semanales. Las clases en vivo son los lunes y miércoles 20 hs (Argentina), todas quedan grabadas en caso de que no puedas asistir. Tenés tareas paso a paso y feedback personalizado.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿Funciona si vivo fuera de Argentina?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Sí. La metodología está diseñada para el mercado hispanohablante en cualquier país.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>¿Hay un proceso de admisión?</span>
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Sí. Para asegurar la calidad de la formación, hacemos una entrevista breve antes del ingreso. Aplicás, te contactamos y vemos si es el momento adecuado para vos.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final" id="aplicar" data-screen-label="aplicar">
+  <div class="cta-final-bg"></div>
+  <div class="container">
+    <div class="cta-final-inner">
+      <span class="eyebrow on-dark">Tu próximo paso empieza <em class="accent-coral">HOY</em></span>
+      <h2 class="cta-final-title">
+        Aplicá al<br/>
+        <span class="huge">Club&nbsp;C.</span>
+        <span class="hero-script accent-sky">y volvé a disfrutar de tu vocación.</span>
+      </h2>
+      <p class="lead on-dark" style="margin: 32px auto 0; text-align: center;">
+        Cupos limitados · admisión por entrevista
+      </p>
+      <div class="cta-final-action">
+        <button class="btn btn-accent" data-open-form type="button">
+          <span data-tweak="ctaPrimary">Quiero ser parte del Club C</span>
+          <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" data-screen-label="footer" style="padding: 32px 0">
+  <div class="container">
+    <div class="footer-top" style="padding: 0 0 20px">
+      <div class="footer-brand">
+        <img src="https://clubymetodoc-ship-it.github.io/pagina-de-inicio-/assets/logo-club-c.png" alt="Club C" style="width: 200px" />
+        <p>Formación en marketing y ventas digitales para profesionales del fitness y la salud.</p>
+      </div>
+      <div>
+        <h5>Formaciones</h5>
+        <ul>
+          <li><a href="#metodo">Método C</a></li>
+          <li><a href="#ascenso">Método Ascenso</a></li>
+          <li><a href="#programa">Programa formativo</a></li>
+          <li><a href="#" data-open-form>Aplicar al Club</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Club C</h5>
+        <ul>
+          <li><a href="#cate">Sobre Cate</a></li>
+          <li><a href="#">Casos de éxito</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="mailto:clubymetodo.c@catebarale.com">clubymetodo.c@catebarale.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom" style="padding: 10px 0 0">
+      <div>© 2026 Club C · Cate Barale. Todos los derechos reservados.</div>
+      <div class="footer-values">
+        <span>Compromiso</span>
+        <span class="dot">·</span>
+        <span>Confianza</span>
+        <span class="dot">·</span>
+        <span>Crecimiento</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div id="video-modal" class="video-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+  <button type="button" class="video-modal-close" aria-label="Cerrar video">&times;</button>
+  <div class="video-modal-frame">
+    <div class="video-modal-player" id="video-modal-player"></div>
+  </div>
+</div>
+
+<script>
+// --- FAQ ---
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+window.toggleFaq = toggleFaq;
+
+// --- Reveal on scroll ---
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.style.opacity = '';
+      e.target.style.transform = '';
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.10 });
+document.querySelectorAll('.pain-card, .audience-card, .fase, .include-card, .testimonial, .lograr-list li, .faq-item').forEach((el) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(16px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  revealObs.observe(el);
+});
+
+// ============================================================
+//   TESTIMONIAL VIDEO MODAL (Panda Video)
+// ============================================================
+(function () {
+  const modal = document.getElementById('video-modal');
+  const player = document.getElementById('video-modal-player');
+  if (!modal || !player) return;
+
+  function open(library, videoId) {
+    if (!library || !videoId || library.startsWith('REPLACE_') || videoId.startsWith('REPLACE_')) {
+      console.warn('[Club C] Falta configurar el embed de Panda Video para este testimonio.');
+      return;
+    }
+    const src = `https://player-${library}.tv.pandavideo.com.br/embed/?v=${encodeURIComponent(videoId)}`;
+    player.innerHTML = `<iframe src="${src}" allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+    modal.hidden = false;
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('video-modal-open');
+  }
+
+  function close() {
+    player.innerHTML = '';
+    modal.hidden = true;
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('video-modal-open');
+  }
+
+  document.querySelectorAll('.testimonial-video-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      open(btn.dataset.pandaLibrary, btn.dataset.pandaVideo);
+    });
+  });
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal || e.target.classList.contains('video-modal-close')) close();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.hidden) close();
+  });
+})();
+
+// ============================================================
+//   GHL POPUP BRIDGE
+//   GHL's Popup element doesn't support an "On click" trigger.
+//   Workaround: in the GHL page builder, add a hidden native Button
+//   with action "On Click → Open Popup" and assign it the custom
+//   class .gh-popup-trigger. The handler below intercepts clicks on
+//   any [data-open-form] CTA and programmatically clicks the hidden
+//   GHL button, so the popup opens through GHL's own handler and the
+//   funnel records the conversion natively.
+// ============================================================
+(function () {
+  function fireGhlPopup() {
+    var wrappers = document.querySelectorAll('.gh-popup-trigger');
+    for (var i = 0; i < wrappers.length; i++) {
+      var w = wrappers[i];
+      var clickable = w.matches('a, button') ? w : w.querySelector('a, button');
+      if (clickable) { clickable.click(); return true; }
+    }
+    return false;
+  }
+
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('[data-open-form]');
+    if (!trigger) return;
+    e.preventDefault();
+    fireGhlPopup();
+  });
+})();
+</script>
+</body>
+</html>
+
+<style id="__om-edit-overrides">
+.testimonials .section-head :is(h1,h2,h3,h4,h5,h6) >span { color: rgb(21, 35, 104) !important }
+.testimonials .section-head :is(h1,h2,h3,h4,h5,h6) >span { color: rgb(35, 50, 124) !important }
+#aplicar .apply-form :is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) >:is(h1,h2,h3,h4,h5,h6,p,li,dt,dd,blockquote,figcaption,label,span,a,em,strong,small,td,th,caption) { color: rgb(236, 238, 240) !important }
+#tweaks-panel [aria-label="Cerrar"] { background-color: rgb(54, 69, 125) !important }
+#tweaks-panel [aria-label="Cerrar"] { background-color: rgb(45, 57, 101) !important }
+</style>
