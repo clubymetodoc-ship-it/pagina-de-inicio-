@@ -443,13 +443,12 @@ section { position: relative; }
   position: absolute; inset: 0;
   background-size: cover;
   background-position: center;
-  filter: brightness(0.62) contrast(1.05);
 }
 .yt-feature-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to top, rgba(20, 25, 43, 0.85) 0%, transparent 60%),
-    linear-gradient(to right, rgba(58, 79, 143, 0.35), transparent 60%);
+    linear-gradient(to top, rgba(20, 25, 43, 0.35) 0%, transparent 45%),
+    linear-gradient(to right, rgba(58, 79, 143, 0.15), transparent 60%);
 }
 .yt-feature-play {
   position: absolute;
@@ -465,6 +464,10 @@ section { position: relative; }
 }
 .yt-feature:hover .yt-feature-play { transform: translate(-50%, -50%) scale(1.08); }
 .yt-feature-play svg { width: 32px; height: 32px; margin-left: 4px; }
+@media (max-width: 720px) {
+  .yt-feature-play { width: 64px; height: 64px; }
+  .yt-feature-play svg { width: 24px; height: 24px; margin-left: 3px; }
+}
 
 .yt-feature-caption {
   position: absolute;
@@ -696,17 +699,10 @@ section { position: relative; }
 
       <div class="yt-stack">
         <!-- Featured episode -->
-        <a href="https://youtu.be/Wryo0blW1r0" target="_blank" rel="noopener" class="yt-feature">
-          <div class="yt-feature-bg" style="background-image: url('https://i.ytimg.com/vi/Wryo0blW1r0/maxresdefault.jpg');"></div>
-          <div class="yt-feature-overlay"></div>
+        <a href="https://youtu.be/Wryo0blW1r0" target="_blank" rel="noopener" class="yt-feature" aria-label="Invertir con miedo: cómo dar el primer paso sin poner en riesgo tu tranquilidad - Club C">
+          <div class="yt-feature-bg" style="background-image: url('https://assets.cdn.filesafe.space/O2h70YK2ouoDgMqM1u7E/media/6a277e2349e55f8519bd3b0b.png');"></div>
           <div class="yt-feature-play">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-          </div>
-          <div class="yt-feature-caption">
-            <div>
-              <div class="ep">episodio destacado</div>
-              <h3 class="title">Invertir con miedo: cómo dar el primer paso sin poner en riesgo tu tranquilidad - Club C</h3>
-            </div>
           </div>
         </a>
 
