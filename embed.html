@@ -243,7 +243,7 @@ section { position: relative; }
   min-height: 100vh;
   background: var(--primary-deep);
   color: var(--accessory);
-  padding: 120px 0 0;
+  padding: 96px 0 0;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -282,13 +282,13 @@ section { position: relative; }
   width: 100%;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 60px 40px 40px;
+  padding: 28px 40px 40px;
   flex: 1;
 }
 @media (max-width: 1080px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 60px 32px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 28px 32px 40px; }
 }
-@media (max-width: 720px) { .hero-grid { padding: 40px 20px; } }
+@media (max-width: 720px) { .hero-grid { padding: 20px 20px 32px; } }
 
 .hero-eyebrow {
   display: inline-flex;
@@ -1755,7 +1755,7 @@ body.video-modal-open { overflow: hidden; }
    pixel widths/heights. These overrides relax them on small viewports so
    the page reflows cleanly on phones. */
 @media (max-width: 880px) {
-  .hero-grid { padding-top: 100px; }
+  .hero-grid { padding-top: 24px; }
   .hero-title .line[style] { font-size: clamp(40px, 9vw, 64px) !important; }
   .hero-script[style] {
     font-size: clamp(22px, 5.4vw, 32px) !important;
